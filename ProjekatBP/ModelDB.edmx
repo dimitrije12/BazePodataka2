@@ -1,0 +1,1269 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="ModelDB.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2012" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityContainer Name="ModelDBStoreContainer">
+    <EntitySet Name="Gradovi" EntityType="ModelDB.Store.Gradovi" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Ucenici" EntityType="ModelDB.Store.Ucenici" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Zivis" EntityType="ModelDB.Store.Zivis" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Roditelji" EntityType="ModelDB.Store.Roditelji" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="PrivatneSkole" EntityType="ModelDB.Store.PrivatneSkole" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Pohadjas" EntityType="ModelDB.Store.Pohadjas" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Zaposlenis" EntityType="ModelDB.Store.Zaposlenis" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Predmeti" EntityType="ModelDB.Store.Predmeti" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Kabineti" EntityType="ModelDB.Store.Kabineti" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Cistis" EntityType="ModelDB.Store.Cistis" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Cuvas" EntityType="ModelDB.Store.Cuvas" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Vlasnici" EntityType="ModelDB.Store.Vlasnici" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Drzis" EntityType="ModelDB.Store.Drzis" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="PraviUgovors" EntityType="ModelDB.Store.PraviUgovors" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Ugovori" EntityType="ModelDB.Store.Ugovori" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Zaposlenis_Profesor" EntityType="ModelDB.Store.Zaposlenis_Profesor" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Zaposlenis_Spremacica" EntityType="ModelDB.Store.Zaposlenis_Spremacica" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Zaposlenis_Obezbedjenje" EntityType="ModelDB.Store.Zaposlenis_Obezbedjenje" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Zaposlenis_Direktor" EntityType="ModelDB.Store.Zaposlenis_Direktor" store:Type="Tables" Schema="dbo" />
+    <AssociationSet Name="GradZivi" Association="ModelDB.Store.GradZivi">
+      <End Role="Grad" EntitySet="Gradovi" />
+      <End Role="Zivi" EntitySet="Zivis" />
+    </AssociationSet>
+    <AssociationSet Name="UcenikZivi" Association="ModelDB.Store.UcenikZivi">
+      <End Role="Ucenik" EntitySet="Ucenici" />
+      <End Role="Zivi" EntitySet="Zivis" />
+    </AssociationSet>
+    <AssociationSet Name="RoditeljUcenik" Association="ModelDB.Store.RoditeljUcenik">
+      <End Role="Roditelj" EntitySet="Roditelji" />
+      <End Role="Ucenik" EntitySet="Ucenici" />
+    </AssociationSet>
+    <AssociationSet Name="GradPrivatnaSkola" Association="ModelDB.Store.GradPrivatnaSkola">
+      <End Role="Grad" EntitySet="Gradovi" />
+      <End Role="PrivatnaSkola" EntitySet="PrivatneSkole" />
+    </AssociationSet>
+    <AssociationSet Name="PohadjaUcenik" Association="ModelDB.Store.PohadjaUcenik">
+      <End Role="Pohadja" EntitySet="Pohadjas" />
+      <End Role="Ucenik" EntitySet="Ucenici" />
+    </AssociationSet>
+    <AssociationSet Name="PohadjaPrivatnaSkola" Association="ModelDB.Store.PohadjaPrivatnaSkola">
+      <End Role="Pohadja" EntitySet="Pohadjas" />
+      <End Role="PrivatnaSkola" EntitySet="PrivatneSkole" />
+    </AssociationSet>
+    <AssociationSet Name="ZaposleniPrivatnaSkola" Association="ModelDB.Store.ZaposleniPrivatnaSkola">
+      <End Role="Zaposleni" EntitySet="Zaposlenis" />
+      <End Role="PrivatnaSkola" EntitySet="PrivatneSkole" />
+    </AssociationSet>
+    <AssociationSet Name="PredmetProfesor" Association="ModelDB.Store.PredmetProfesor">
+      <End Role="Predmet" EntitySet="Predmeti" />
+      <End Role="Profesor" EntitySet="Zaposlenis_Profesor" />
+    </AssociationSet>
+    <AssociationSet Name="KabinetPredmet" Association="ModelDB.Store.KabinetPredmet">
+      <End Role="Kabinet" EntitySet="Kabineti" />
+      <End Role="Predmet" EntitySet="Predmeti" />
+    </AssociationSet>
+    <AssociationSet Name="PrivatnaSkolaKabinet" Association="ModelDB.Store.PrivatnaSkolaKabinet">
+      <End Role="PrivatnaSkola" EntitySet="PrivatneSkole" />
+      <End Role="Kabinet" EntitySet="Kabineti" />
+    </AssociationSet>
+    <AssociationSet Name="SpremacicaCisti" Association="ModelDB.Store.SpremacicaCisti">
+      <End Role="Spremacica" EntitySet="Zaposlenis_Spremacica" />
+      <End Role="Cisti" EntitySet="Cistis" />
+    </AssociationSet>
+    <AssociationSet Name="CistiKabinet" Association="ModelDB.Store.CistiKabinet">
+      <End Role="Cisti" EntitySet="Cistis" />
+      <End Role="Kabinet" EntitySet="Kabineti" />
+    </AssociationSet>
+    <AssociationSet Name="CuvaObezbedjenje" Association="ModelDB.Store.CuvaObezbedjenje">
+      <End Role="Cuva" EntitySet="Cuvas" />
+      <End Role="Obezbedjenje" EntitySet="Zaposlenis_Obezbedjenje" />
+    </AssociationSet>
+    <AssociationSet Name="CuvaKabinet" Association="ModelDB.Store.CuvaKabinet">
+      <End Role="Cuva" EntitySet="Cuvas" />
+      <End Role="Kabinet" EntitySet="Kabineti" />
+    </AssociationSet>
+    <AssociationSet Name="DrziVlasnik" Association="ModelDB.Store.DrziVlasnik">
+      <End Role="Drzi" EntitySet="Drzis" />
+      <End Role="Vlasnik" EntitySet="Vlasnici" />
+    </AssociationSet>
+    <AssociationSet Name="DrziDirektor" Association="ModelDB.Store.DrziDirektor">
+      <End Role="Drzi" EntitySet="Drzis" />
+      <End Role="Direktor" EntitySet="Zaposlenis_Direktor" />
+    </AssociationSet>
+    <AssociationSet Name="PrivatnaSkolaDrzi" Association="ModelDB.Store.PrivatnaSkolaDrzi">
+      <End Role="PrivatnaSkola" EntitySet="PrivatneSkole" />
+      <End Role="Drzi" EntitySet="Drzis" />
+    </AssociationSet>
+    <AssociationSet Name="PraviUgovorUgovor" Association="ModelDB.Store.PraviUgovorUgovor">
+      <End Role="PraviUgovor" EntitySet="PraviUgovors" />
+      <End Role="Ugovor" EntitySet="Ugovori" />
+    </AssociationSet>
+    <AssociationSet Name="PraviUgovorDirektor" Association="ModelDB.Store.PraviUgovorDirektor">
+      <End Role="PraviUgovor" EntitySet="PraviUgovors" />
+      <End Role="Direktor" EntitySet="Zaposlenis_Direktor" />
+    </AssociationSet>
+    <AssociationSet Name="PraviUgovorRoditelj" Association="ModelDB.Store.PraviUgovorRoditelj">
+      <End Role="PraviUgovor" EntitySet="PraviUgovors" />
+      <End Role="Roditelj" EntitySet="Roditelji" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Profesor_inherits_Zaposleni" Association="ModelDB.Store.FK_Profesor_inherits_Zaposleni">
+      <End Role="Zaposleni" EntitySet="Zaposlenis" />
+      <End Role="Profesor" EntitySet="Zaposlenis_Profesor" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Spremacica_inherits_Zaposleni" Association="ModelDB.Store.FK_Spremacica_inherits_Zaposleni">
+      <End Role="Zaposleni" EntitySet="Zaposlenis" />
+      <End Role="Spremacica" EntitySet="Zaposlenis_Spremacica" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Obezbedjenje_inherits_Zaposleni" Association="ModelDB.Store.FK_Obezbedjenje_inherits_Zaposleni">
+      <End Role="Zaposleni" EntitySet="Zaposlenis" />
+      <End Role="Obezbedjenje" EntitySet="Zaposlenis_Obezbedjenje" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Direktor_inherits_Zaposleni" Association="ModelDB.Store.FK_Direktor_inherits_Zaposleni">
+      <End Role="Zaposleni" EntitySet="Zaposlenis" />
+      <End Role="Direktor" EntitySet="Zaposlenis_Direktor" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="Gradovi">
+    <Key>
+      <PropertyRef Name="PostanskiBroj" />
+    </Key>
+    <Property Name="ImeGrada" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="PostanskiBroj" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Ucenici">
+    <Key>
+      <PropertyRef Name="JMBG_U" />
+    </Key>
+    <Property Name="JMBG_U" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Ime_U" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Prezime_U" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Godine" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="RoditeljJMBG_Rod" Type="nvarchar(max)" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Zivis">
+    <Key>
+      <PropertyRef Name="GradPostanskiBroj" />
+      <PropertyRef Name="UcenikJMBG_U" />
+    </Key>
+    <Property Name="GradPostanskiBroj" Type="int" Nullable="false" />
+    <Property Name="UcenikJMBG_U" Type="nvarchar(max)" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Roditelji">
+    <Key>
+      <PropertyRef Name="JMBG_Rod" />
+    </Key>
+    <Property Name="JMBG_Rod" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Ime_Rod" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Prezime_Rod" Type="nvarchar(max)" Nullable="false" />
+  </EntityType>
+  <EntityType Name="PrivatneSkole">
+    <Key>
+      <PropertyRef Name="RegBroj" />
+    </Key>
+    <Property Name="RegBroj" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="BrojTelefon" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="ImeSkole" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="GradPostanskiBroj" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Pohadjas">
+    <Key>
+      <PropertyRef Name="UcenikJMBG_U" />
+      <PropertyRef Name="PrivatnaSkolaRegBroj" />
+    </Key>
+    <Property Name="UcenikJMBG_U" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="PrivatnaSkolaRegBroj" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Zaposlenis">
+    <Key>
+      <PropertyRef Name="JMBG_R" />
+    </Key>
+    <Property Name="JMBG_R" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Godine" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Ime_R" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Prezime_R" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="PrivatnaSkolaRegBroj" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Predmeti">
+    <Key>
+      <PropertyRef Name="ImePredmet" />
+    </Key>
+    <Property Name="ImePredmet" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="BrojCasova" Type="int" Nullable="false" />
+    <Property Name="KabinetBroj" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Kabineti">
+    <Key>
+      <PropertyRef Name="Broj" />
+    </Key>
+    <Property Name="Broj" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Sprat" Type="int" Nullable="false" />
+    <Property Name="PrivatnaSkolaRegBroj" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Cistis">
+    <Key>
+      <PropertyRef Name="SpremacicaJMBG_R" />
+      <PropertyRef Name="KabinetBroj" />
+    </Key>
+    <Property Name="SpremacicaJMBG_R" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="KabinetBroj" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Cuvas">
+    <Key>
+      <PropertyRef Name="KabinetBroj" />
+      <PropertyRef Name="ObezbedjenjeJMBG_R" />
+    </Key>
+    <Property Name="ObezbedjenjeJMBG_R" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="KabinetBroj" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Vlasnici">
+    <Key>
+      <PropertyRef Name="JMBG_V" />
+    </Key>
+    <Property Name="JMBG_V" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Ime_V" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Prezime_V" Type="nvarchar(max)" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Drzis">
+    <Key>
+      <PropertyRef Name="VlasnikJMBG_V" />
+      <PropertyRef Name="PrivatnaSkolaRegBroj" />
+    </Key>
+    <Property Name="VlasnikJMBG_V" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="DirektorJMBG_R" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="PrivatnaSkolaRegBroj" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="PraviUgovors">
+    <Key>
+      <PropertyRef Name="DirektorJMBG_R" />
+      <PropertyRef Name="UgovorBrojUgovora" />
+    </Key>
+    <Property Name="Nacin_Placanja" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="UgovorBrojUgovora" Type="int" Nullable="false" />
+    <Property Name="DirektorJMBG_R" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="RoditeljJMBG_Rod" Type="nvarchar(max)" Nullable="true" />
+  </EntityType>
+  <EntityType Name="Ugovori">
+    <Key>
+      <PropertyRef Name="BrojUgovora" />
+    </Key>
+    <Property Name="BrojUgovora" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Zaposlenis_Profesor">
+    <Key>
+      <PropertyRef Name="JMBG_R" />
+    </Key>
+    <Property Name="PredmetImePredmet" Type="nvarchar(max)" Nullable="true" />
+    <Property Name="JMBG_R" Type="nvarchar(max)" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Zaposlenis_Spremacica">
+    <Key>
+      <PropertyRef Name="JMBG_R" />
+    </Key>
+    <Property Name="JMBG_R" Type="nvarchar(max)" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Zaposlenis_Obezbedjenje">
+    <Key>
+      <PropertyRef Name="JMBG_R" />
+    </Key>
+    <Property Name="JMBG_R" Type="nvarchar(max)" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Zaposlenis_Direktor">
+    <Key>
+      <PropertyRef Name="JMBG_R" />
+    </Key>
+    <Property Name="JMBG_R" Type="nvarchar(max)" Nullable="false" />
+  </EntityType>
+  <Association Name="GradZivi">
+    <End Role="Grad" Type="ModelDB.Store.Gradovi" Multiplicity="1" />
+    <End Role="Zivi" Type="ModelDB.Store.Zivis" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Grad">
+        <PropertyRef Name="PostanskiBroj" />
+      </Principal>
+      <Dependent Role="Zivi">
+        <PropertyRef Name="GradPostanskiBroj" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="UcenikZivi">
+    <End Role="Ucenik" Type="ModelDB.Store.Ucenici" Multiplicity="1" />
+    <End Role="Zivi" Type="ModelDB.Store.Zivis" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Ucenik">
+        <PropertyRef Name="JMBG_U" />
+      </Principal>
+      <Dependent Role="Zivi">
+        <PropertyRef Name="UcenikJMBG_U" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="RoditeljUcenik">
+    <End Role="Roditelj" Type="ModelDB.Store.Roditelji" Multiplicity="1" />
+    <End Role="Ucenik" Type="ModelDB.Store.Ucenici" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Roditelj">
+        <PropertyRef Name="JMBG_Rod" />
+      </Principal>
+      <Dependent Role="Ucenik">
+        <PropertyRef Name="RoditeljJMBG_Rod" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="GradPrivatnaSkola">
+    <End Role="Grad" Type="ModelDB.Store.Gradovi" Multiplicity="1" />
+    <End Role="PrivatnaSkola" Type="ModelDB.Store.PrivatneSkole" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Grad">
+        <PropertyRef Name="PostanskiBroj" />
+      </Principal>
+      <Dependent Role="PrivatnaSkola">
+        <PropertyRef Name="GradPostanskiBroj" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="PohadjaUcenik">
+    <End Role="Pohadja" Type="ModelDB.Store.Pohadjas" Multiplicity="*" />
+    <End Role="Ucenik" Type="ModelDB.Store.Ucenici" Multiplicity="1" />
+    <ReferentialConstraint>
+      <Principal Role="Ucenik">
+        <PropertyRef Name="JMBG_U" />
+      </Principal>
+      <Dependent Role="Pohadja">
+        <PropertyRef Name="UcenikJMBG_U" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="PohadjaPrivatnaSkola">
+    <End Role="Pohadja" Type="ModelDB.Store.Pohadjas" Multiplicity="*" />
+    <End Role="PrivatnaSkola" Type="ModelDB.Store.PrivatneSkole" Multiplicity="1" />
+    <ReferentialConstraint>
+      <Principal Role="PrivatnaSkola">
+        <PropertyRef Name="RegBroj" />
+      </Principal>
+      <Dependent Role="Pohadja">
+        <PropertyRef Name="PrivatnaSkolaRegBroj" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="ZaposleniPrivatnaSkola">
+    <End Role="Zaposleni" Type="ModelDB.Store.Zaposlenis" Multiplicity="*" />
+    <End Role="PrivatnaSkola" Type="ModelDB.Store.PrivatneSkole" Multiplicity="1" />
+    <ReferentialConstraint>
+      <Principal Role="PrivatnaSkola">
+        <PropertyRef Name="RegBroj" />
+      </Principal>
+      <Dependent Role="Zaposleni">
+        <PropertyRef Name="PrivatnaSkolaRegBroj" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="PredmetProfesor">
+    <End Role="Predmet" Type="ModelDB.Store.Predmeti" Multiplicity="0..1" />
+    <End Role="Profesor" Type="ModelDB.Store.Zaposlenis_Profesor" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Predmet">
+        <PropertyRef Name="ImePredmet" />
+      </Principal>
+      <Dependent Role="Profesor">
+        <PropertyRef Name="PredmetImePredmet" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="KabinetPredmet">
+    <End Role="Kabinet" Type="ModelDB.Store.Kabineti" Multiplicity="1" />
+    <End Role="Predmet" Type="ModelDB.Store.Predmeti" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Kabinet">
+        <PropertyRef Name="Broj" />
+      </Principal>
+      <Dependent Role="Predmet">
+        <PropertyRef Name="KabinetBroj" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="PrivatnaSkolaKabinet">
+    <End Role="PrivatnaSkola" Type="ModelDB.Store.PrivatneSkole" Multiplicity="1" />
+    <End Role="Kabinet" Type="ModelDB.Store.Kabineti" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="PrivatnaSkola">
+        <PropertyRef Name="RegBroj" />
+      </Principal>
+      <Dependent Role="Kabinet">
+        <PropertyRef Name="PrivatnaSkolaRegBroj" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="SpremacicaCisti">
+    <End Role="Spremacica" Type="ModelDB.Store.Zaposlenis_Spremacica" Multiplicity="1" />
+    <End Role="Cisti" Type="ModelDB.Store.Cistis" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Spremacica">
+        <PropertyRef Name="JMBG_R" />
+      </Principal>
+      <Dependent Role="Cisti">
+        <PropertyRef Name="SpremacicaJMBG_R" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="CistiKabinet">
+    <End Role="Cisti" Type="ModelDB.Store.Cistis" Multiplicity="*" />
+    <End Role="Kabinet" Type="ModelDB.Store.Kabineti" Multiplicity="1" />
+    <ReferentialConstraint>
+      <Principal Role="Kabinet">
+        <PropertyRef Name="Broj" />
+      </Principal>
+      <Dependent Role="Cisti">
+        <PropertyRef Name="KabinetBroj" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="CuvaObezbedjenje">
+    <End Role="Cuva" Type="ModelDB.Store.Cuvas" Multiplicity="*" />
+    <End Role="Obezbedjenje" Type="ModelDB.Store.Zaposlenis_Obezbedjenje" Multiplicity="1" />
+    <ReferentialConstraint>
+      <Principal Role="Obezbedjenje">
+        <PropertyRef Name="JMBG_R" />
+      </Principal>
+      <Dependent Role="Cuva">
+        <PropertyRef Name="ObezbedjenjeJMBG_R" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="CuvaKabinet">
+    <End Role="Cuva" Type="ModelDB.Store.Cuvas" Multiplicity="*" />
+    <End Role="Kabinet" Type="ModelDB.Store.Kabineti" Multiplicity="1" />
+    <ReferentialConstraint>
+      <Principal Role="Kabinet">
+        <PropertyRef Name="Broj" />
+      </Principal>
+      <Dependent Role="Cuva">
+        <PropertyRef Name="KabinetBroj" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="DrziVlasnik">
+    <End Role="Drzi" Type="ModelDB.Store.Drzis" Multiplicity="*" />
+    <End Role="Vlasnik" Type="ModelDB.Store.Vlasnici" Multiplicity="1" />
+    <ReferentialConstraint>
+      <Principal Role="Vlasnik">
+        <PropertyRef Name="JMBG_V" />
+      </Principal>
+      <Dependent Role="Drzi">
+        <PropertyRef Name="VlasnikJMBG_V" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="DrziDirektor">
+    <End Role="Drzi" Type="ModelDB.Store.Drzis" Multiplicity="*" />
+    <End Role="Direktor" Type="ModelDB.Store.Zaposlenis_Direktor" Multiplicity="1" />
+    <ReferentialConstraint>
+      <Principal Role="Direktor">
+        <PropertyRef Name="JMBG_R" />
+      </Principal>
+      <Dependent Role="Drzi">
+        <PropertyRef Name="DirektorJMBG_R" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="PrivatnaSkolaDrzi">
+    <End Role="PrivatnaSkola" Type="ModelDB.Store.PrivatneSkole" Multiplicity="1" />
+    <End Role="Drzi" Type="ModelDB.Store.Drzis" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="PrivatnaSkola">
+        <PropertyRef Name="RegBroj" />
+      </Principal>
+      <Dependent Role="Drzi">
+        <PropertyRef Name="PrivatnaSkolaRegBroj" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="PraviUgovorUgovor">
+    <End Role="PraviUgovor" Type="ModelDB.Store.PraviUgovors" Multiplicity="*" />
+    <End Role="Ugovor" Type="ModelDB.Store.Ugovori" Multiplicity="1" />
+    <ReferentialConstraint>
+      <Principal Role="Ugovor">
+        <PropertyRef Name="BrojUgovora" />
+      </Principal>
+      <Dependent Role="PraviUgovor">
+        <PropertyRef Name="UgovorBrojUgovora" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="PraviUgovorDirektor">
+    <End Role="PraviUgovor" Type="ModelDB.Store.PraviUgovors" Multiplicity="*" />
+    <End Role="Direktor" Type="ModelDB.Store.Zaposlenis_Direktor" Multiplicity="1" />
+    <ReferentialConstraint>
+      <Principal Role="Direktor">
+        <PropertyRef Name="JMBG_R" />
+      </Principal>
+      <Dependent Role="PraviUgovor">
+        <PropertyRef Name="DirektorJMBG_R" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="PraviUgovorRoditelj">
+    <End Role="PraviUgovor" Type="ModelDB.Store.PraviUgovors" Multiplicity="*" />
+    <End Role="Roditelj" Type="ModelDB.Store.Roditelji" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="Roditelj">
+        <PropertyRef Name="JMBG_Rod" />
+      </Principal>
+      <Dependent Role="PraviUgovor">
+        <PropertyRef Name="RoditeljJMBG_Rod" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Profesor_inherits_Zaposleni">
+    <End Role="Zaposleni" Type="ModelDB.Store.Zaposlenis" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="Profesor" Type="ModelDB.Store.Zaposlenis_Profesor" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="Zaposleni">
+        <PropertyRef Name="JMBG_R" />
+      </Principal>
+      <Dependent Role="Profesor">
+        <PropertyRef Name="JMBG_R" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Spremacica_inherits_Zaposleni">
+    <End Role="Zaposleni" Type="ModelDB.Store.Zaposlenis" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="Spremacica" Type="ModelDB.Store.Zaposlenis_Spremacica" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="Zaposleni">
+        <PropertyRef Name="JMBG_R" />
+      </Principal>
+      <Dependent Role="Spremacica">
+        <PropertyRef Name="JMBG_R" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Obezbedjenje_inherits_Zaposleni">
+    <End Role="Zaposleni" Type="ModelDB.Store.Zaposlenis" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="Obezbedjenje" Type="ModelDB.Store.Zaposlenis_Obezbedjenje" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="Zaposleni">
+        <PropertyRef Name="JMBG_R" />
+      </Principal>
+      <Dependent Role="Obezbedjenje">
+        <PropertyRef Name="JMBG_R" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Direktor_inherits_Zaposleni">
+    <End Role="Zaposleni" Type="ModelDB.Store.Zaposlenis" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="Direktor" Type="ModelDB.Store.Zaposlenis_Direktor" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="Zaposleni">
+        <PropertyRef Name="JMBG_R" />
+      </Principal>
+      <Dependent Role="Direktor">
+        <PropertyRef Name="JMBG_R" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema xmlns="http://schemas.microsoft.com/ado/2009/11/edm" xmlns:cg="http://schemas.microsoft.com/ado/2006/04/codegeneration" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" Namespace="ModelDB" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" annotation:UseStrongSpatialTypes="false">
+        <EntityContainer Name="ModelDBContext" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Gradovi" EntityType="ModelDB.Grad" />
+          <EntitySet Name="Ucenici" EntityType="ModelDB.Ucenik" />
+          <EntitySet Name="Zivis" EntityType="ModelDB.Zivi" />
+          <AssociationSet Name="GradZivi" Association="ModelDB.GradZivi">
+            <End Role="Grad" EntitySet="Gradovi" />
+            <End Role="Zivi" EntitySet="Zivis" />
+          </AssociationSet>
+          <AssociationSet Name="UcenikZivi" Association="ModelDB.UcenikZivi">
+            <End Role="Ucenik" EntitySet="Ucenici" />
+            <End Role="Zivi" EntitySet="Zivis" />
+          </AssociationSet>
+          <EntitySet Name="Roditelji" EntityType="ModelDB.Roditelj" />
+          <AssociationSet Name="RoditeljUcenik" Association="ModelDB.RoditeljUcenik">
+            <End Role="Roditelj" EntitySet="Roditelji" />
+            <End Role="Ucenik" EntitySet="Ucenici" />
+          </AssociationSet>
+          <EntitySet Name="PrivatneSkole" EntityType="ModelDB.PrivatnaSkola" />
+          <AssociationSet Name="GradPrivatnaSkola" Association="ModelDB.GradPrivatnaSkola">
+            <End Role="Grad" EntitySet="Gradovi" />
+            <End Role="PrivatnaSkola" EntitySet="PrivatneSkole" />
+          </AssociationSet>
+          <EntitySet Name="Pohadjas" EntityType="ModelDB.Pohadja" />
+          <AssociationSet Name="PohadjaUcenik" Association="ModelDB.PohadjaUcenik">
+            <End Role="Pohadja" EntitySet="Pohadjas" />
+            <End Role="Ucenik" EntitySet="Ucenici" />
+          </AssociationSet>
+          <AssociationSet Name="PohadjaPrivatnaSkola" Association="ModelDB.PohadjaPrivatnaSkola">
+            <End Role="Pohadja" EntitySet="Pohadjas" />
+            <End Role="PrivatnaSkola" EntitySet="PrivatneSkole" />
+          </AssociationSet>
+          <EntitySet Name="Zaposlenis" EntityType="ModelDB.Zaposleni" />
+          <AssociationSet Name="ZaposleniPrivatnaSkola" Association="ModelDB.ZaposleniPrivatnaSkola">
+            <End Role="Zaposleni" EntitySet="Zaposlenis" />
+            <End Role="PrivatnaSkola" EntitySet="PrivatneSkole" />
+          </AssociationSet>
+          <EntitySet Name="Predmeti" EntityType="ModelDB.Predmet" />
+          <AssociationSet Name="PredmetProfesor" Association="ModelDB.PredmetProfesor">
+            <End Role="Predmet" EntitySet="Predmeti" />
+            <End Role="Profesor" EntitySet="Zaposlenis" />
+          </AssociationSet>
+          <EntitySet Name="Kabineti" EntityType="ModelDB.Kabinet" />
+          <AssociationSet Name="KabinetPredmet" Association="ModelDB.KabinetPredmet">
+            <End Role="Kabinet" EntitySet="Kabineti" />
+            <End Role="Predmet" EntitySet="Predmeti" />
+          </AssociationSet>
+          <AssociationSet Name="PrivatnaSkolaKabinet" Association="ModelDB.PrivatnaSkolaKabinet">
+            <End Role="PrivatnaSkola" EntitySet="PrivatneSkole" />
+            <End Role="Kabinet" EntitySet="Kabineti" />
+          </AssociationSet>
+          <EntitySet Name="Cistis" EntityType="ModelDB.Cisti" />
+          <EntitySet Name="Cuvas" EntityType="ModelDB.Cuva" />
+          <AssociationSet Name="SpremacicaCisti" Association="ModelDB.SpremacicaCisti">
+            <End Role="Spremacica" EntitySet="Zaposlenis" />
+            <End Role="Cisti" EntitySet="Cistis" />
+          </AssociationSet>
+          <AssociationSet Name="CistiKabinet" Association="ModelDB.CistiKabinet">
+            <End Role="Cisti" EntitySet="Cistis" />
+            <End Role="Kabinet" EntitySet="Kabineti" />
+          </AssociationSet>
+          <AssociationSet Name="CuvaObezbedjenje" Association="ModelDB.CuvaObezbedjenje">
+            <End Role="Cuva" EntitySet="Cuvas" />
+            <End Role="Obezbedjenje" EntitySet="Zaposlenis" />
+          </AssociationSet>
+          <AssociationSet Name="CuvaKabinet" Association="ModelDB.CuvaKabinet">
+            <End Role="Cuva" EntitySet="Cuvas" />
+            <End Role="Kabinet" EntitySet="Kabineti" />
+          </AssociationSet>
+          <EntitySet Name="Vlasnici" EntityType="ModelDB.Vlasnik" />
+          <EntitySet Name="Drzis" EntityType="ModelDB.Drzi" />
+          <AssociationSet Name="DrziVlasnik" Association="ModelDB.DrziVlasnik">
+            <End Role="Drzi" EntitySet="Drzis" />
+            <End Role="Vlasnik" EntitySet="Vlasnici" />
+          </AssociationSet>
+          <AssociationSet Name="DrziDirektor" Association="ModelDB.DrziDirektor">
+            <End Role="Drzi" EntitySet="Drzis" />
+            <End Role="Direktor" EntitySet="Zaposlenis" />
+          </AssociationSet>
+          <AssociationSet Name="PrivatnaSkolaDrzi" Association="ModelDB.PrivatnaSkolaDrzi">
+            <End Role="PrivatnaSkola" EntitySet="PrivatneSkole" />
+            <End Role="Drzi" EntitySet="Drzis" />
+          </AssociationSet>
+          <EntitySet Name="PraviUgovors" EntityType="ModelDB.PraviUgovor" />
+          <EntitySet Name="Ugovori" EntityType="ModelDB.Ugovor" />
+          <AssociationSet Name="PraviUgovorUgovor" Association="ModelDB.PraviUgovorUgovor">
+            <End Role="PraviUgovor" EntitySet="PraviUgovors" />
+            <End Role="Ugovor" EntitySet="Ugovori" />
+          </AssociationSet>
+          <AssociationSet Name="PraviUgovorDirektor" Association="ModelDB.PraviUgovorDirektor">
+            <End Role="PraviUgovor" EntitySet="PraviUgovors" />
+            <End Role="Direktor" EntitySet="Zaposlenis" />
+          </AssociationSet>
+          <AssociationSet Name="PraviUgovorRoditelj" Association="ModelDB.PraviUgovorRoditelj">
+            <End Role="PraviUgovor" EntitySet="PraviUgovors" />
+            <End Role="Roditelj" EntitySet="Roditelji" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="Grad">
+          <Key>
+            <PropertyRef Name="PostanskiBroj" />
+          </Key>
+          <Property Name="ImeGrada" Type="String" Nullable="false" annotation:StoreGeneratedPattern="None" />
+          <Property Name="PostanskiBroj" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Zivis" Relationship="ModelDB.GradZivi" FromRole="Grad" ToRole="Zivi" />
+          <NavigationProperty Name="PrivatneSkole" Relationship="ModelDB.GradPrivatnaSkola" FromRole="Grad" ToRole="PrivatnaSkola" />
+        </EntityType>
+        <EntityType Name="Ucenik">
+          <Key>
+            <PropertyRef Name="JMBG_U" />
+          </Key>
+          <Property Name="JMBG_U" Type="String" Nullable="false" annotation:StoreGeneratedPattern="None" />
+          <Property Name="Ime_U" Type="String" Nullable="false" />
+          <Property Name="Prezime_U" Type="String" Nullable="false" />
+          <Property Name="Godine" Type="String" Nullable="false" />
+          <NavigationProperty Name="Zivis" Relationship="ModelDB.UcenikZivi" FromRole="Ucenik" ToRole="Zivi" />
+          <NavigationProperty Name="Roditelj" Relationship="ModelDB.RoditeljUcenik" FromRole="Ucenik" ToRole="Roditelj" />
+          <Property Name="RoditeljJMBG_Rod" Type="String" Nullable="false" />
+          <NavigationProperty Name="Pohadjas" Relationship="ModelDB.PohadjaUcenik" FromRole="Ucenik" ToRole="Pohadja" />
+        </EntityType>
+        <EntityType Name="Zivi" >
+          <Key>
+            <PropertyRef Name="GradPostanskiBroj" />
+            <PropertyRef Name="UcenikJMBG_U" />
+          </Key>
+          <NavigationProperty Name="Grad" Relationship="ModelDB.GradZivi" FromRole="Zivi" ToRole="Grad" />
+          <Property Name="GradPostanskiBroj" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Ucenik" Relationship="ModelDB.UcenikZivi" FromRole="Zivi" ToRole="Ucenik" />
+          <Property Name="UcenikJMBG_U" Type="String" Nullable="false" />
+        </EntityType>
+        <Association Name="GradZivi">
+          <End Type="ModelDB.Grad" Role="Grad" Multiplicity="1" />
+          <End Type="ModelDB.Zivi" Role="Zivi" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Grad">
+              <PropertyRef Name="PostanskiBroj" />
+            </Principal>
+            <Dependent Role="Zivi">
+              <PropertyRef Name="GradPostanskiBroj" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="UcenikZivi">
+          <End Type="ModelDB.Ucenik" Role="Ucenik" Multiplicity="1" />
+          <End Type="ModelDB.Zivi" Role="Zivi" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Ucenik">
+              <PropertyRef Name="JMBG_U" />
+            </Principal>
+            <Dependent Role="Zivi">
+              <PropertyRef Name="UcenikJMBG_U" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="Roditelj">
+          <Key>
+            <PropertyRef Name="JMBG_Rod" />
+          </Key>
+          <Property Name="JMBG_Rod" Type="String" Nullable="false" annotation:StoreGeneratedPattern="None" />
+          <Property Name="Ime_Rod" Type="String" Nullable="false" />
+          <Property Name="Prezime_Rod" Type="String" Nullable="false" />
+          <NavigationProperty Name="Ucenici" Relationship="ModelDB.RoditeljUcenik" FromRole="Roditelj" ToRole="Ucenik" />
+          <NavigationProperty Name="PraviUgovors" Relationship="ModelDB.PraviUgovorRoditelj" FromRole="Roditelj" ToRole="PraviUgovor" />
+        </EntityType>
+        <Association Name="RoditeljUcenik">
+          <End Type="ModelDB.Roditelj" Role="Roditelj" Multiplicity="1" />
+          <End Type="ModelDB.Ucenik" Role="Ucenik" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Roditelj">
+              <PropertyRef Name="JMBG_Rod" />
+            </Principal>
+            <Dependent Role="Ucenik">
+              <PropertyRef Name="RoditeljJMBG_Rod" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="PrivatnaSkola">
+          <Key>
+            <PropertyRef Name="RegBroj" />
+          </Key>
+          <Property Name="RegBroj" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="BrojTelefon" Type="String" Nullable="false" />
+          <Property Name="ImeSkole" Type="String" Nullable="false" />
+          <NavigationProperty Name="Grad" Relationship="ModelDB.GradPrivatnaSkola" FromRole="PrivatnaSkola" ToRole="Grad" />
+          <Property Name="GradPostanskiBroj" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Pohadjas" Relationship="ModelDB.PohadjaPrivatnaSkola" FromRole="PrivatnaSkola" ToRole="Pohadja" />
+          <NavigationProperty Name="Zaposlenis" Relationship="ModelDB.ZaposleniPrivatnaSkola" FromRole="PrivatnaSkola" ToRole="Zaposleni" />
+          <NavigationProperty Name="Kabineti" Relationship="ModelDB.PrivatnaSkolaKabinet" FromRole="PrivatnaSkola" ToRole="Kabinet" />
+          <NavigationProperty Name="Drzis" Relationship="ModelDB.PrivatnaSkolaDrzi" FromRole="PrivatnaSkola" ToRole="Drzi" />
+        </EntityType>
+        <Association Name="GradPrivatnaSkola">
+          <End Type="ModelDB.Grad" Role="Grad" Multiplicity="1" />
+          <End Type="ModelDB.PrivatnaSkola" Role="PrivatnaSkola" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Grad">
+              <PropertyRef Name="PostanskiBroj" />
+            </Principal>
+            <Dependent Role="PrivatnaSkola">
+              <PropertyRef Name="GradPostanskiBroj" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="Pohadja" >
+          <Key>
+            <PropertyRef Name="UcenikJMBG_U" />
+            <PropertyRef Name="PrivatnaSkolaRegBroj" />
+          </Key>
+          <NavigationProperty Name="Ucenik" Relationship="ModelDB.PohadjaUcenik" FromRole="Pohadja" ToRole="Ucenik" />
+          <Property Name="UcenikJMBG_U" Type="String" Nullable="false" />
+          <NavigationProperty Name="PrivatnaSkola" Relationship="ModelDB.PohadjaPrivatnaSkola" FromRole="Pohadja" ToRole="PrivatnaSkola" />
+          <Property Name="PrivatnaSkolaRegBroj" Type="Int32" Nullable="false" />
+        </EntityType>
+        <Association Name="PohadjaUcenik">
+          <End Type="ModelDB.Pohadja" Role="Pohadja" Multiplicity="*" />
+          <End Type="ModelDB.Ucenik" Role="Ucenik" Multiplicity="1" />
+          <ReferentialConstraint>
+            <Principal Role="Ucenik">
+              <PropertyRef Name="JMBG_U" />
+            </Principal>
+            <Dependent Role="Pohadja">
+              <PropertyRef Name="UcenikJMBG_U" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="PohadjaPrivatnaSkola">
+          <End Type="ModelDB.Pohadja" Role="Pohadja" Multiplicity="*" />
+          <End Type="ModelDB.PrivatnaSkola" Role="PrivatnaSkola" Multiplicity="1" />
+          <ReferentialConstraint>
+            <Principal Role="PrivatnaSkola">
+              <PropertyRef Name="RegBroj" />
+            </Principal>
+            <Dependent Role="Pohadja">
+              <PropertyRef Name="PrivatnaSkolaRegBroj" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="Zaposleni">
+          <Key>
+            <PropertyRef Name="JMBG_R" />
+          </Key>
+          <Property Name="JMBG_R" Type="String" Nullable="false" annotation:StoreGeneratedPattern="None" />
+          <Property Name="Godine" Type="String" Nullable="false" />
+          <Property Name="Ime_R" Type="String" Nullable="false" />
+          <Property Name="Prezime_R" Type="String" Nullable="false" />
+          <NavigationProperty Name="PrivatnaSkola" Relationship="ModelDB.ZaposleniPrivatnaSkola" FromRole="Zaposleni" ToRole="PrivatnaSkola" />
+          <Property Name="PrivatnaSkolaRegBroj" Type="Int32" Nullable="false" />
+        </EntityType>
+        <Association Name="ZaposleniPrivatnaSkola">
+          <End Type="ModelDB.Zaposleni" Role="Zaposleni" Multiplicity="*" />
+          <End Type="ModelDB.PrivatnaSkola" Role="PrivatnaSkola" Multiplicity="1" />
+          <ReferentialConstraint>
+            <Principal Role="PrivatnaSkola">
+              <PropertyRef Name="RegBroj" />
+            </Principal>
+            <Dependent Role="Zaposleni">
+              <PropertyRef Name="PrivatnaSkolaRegBroj" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="Profesor" BaseType="ModelDB.Zaposleni" >
+          <NavigationProperty Name="Predmet" Relationship="ModelDB.PredmetProfesor" FromRole="Profesor" ToRole="Predmet" />
+          <Property Name="PredmetImePredmet" Type="String" Nullable="true" />
+        </EntityType>
+        <EntityType Name="Spremacica" BaseType="ModelDB.Zaposleni" >
+          <NavigationProperty Name="Cistis" Relationship="ModelDB.SpremacicaCisti" FromRole="Spremacica" ToRole="Cisti" />
+        </EntityType>
+        <EntityType Name="Obezbedjenje" BaseType="ModelDB.Zaposleni" >
+          <NavigationProperty Name="Cuvas" Relationship="ModelDB.CuvaObezbedjenje" FromRole="Obezbedjenje" ToRole="Cuva" />
+        </EntityType>
+        <EntityType Name="Direktor" BaseType="ModelDB.Zaposleni" >
+          <NavigationProperty Name="Drzis" Relationship="ModelDB.DrziDirektor" FromRole="Direktor" ToRole="Drzi" />
+          <NavigationProperty Name="PraviUgovore" Relationship="ModelDB.PraviUgovorDirektor" FromRole="Direktor" ToRole="PraviUgovor" />
+        </EntityType>
+        <EntityType Name="Predmet">
+          <Key>
+            <PropertyRef Name="ImePredmet" />
+          </Key>
+          <Property Name="ImePredmet" Type="String" Nullable="false" annotation:StoreGeneratedPattern="None" />
+          <Property Name="BrojCasova" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Profesori" Relationship="ModelDB.PredmetProfesor" FromRole="Predmet" ToRole="Profesor" />
+          <NavigationProperty Name="Kabinet" Relationship="ModelDB.KabinetPredmet" FromRole="Predmet" ToRole="Kabinet" />
+          <Property Name="KabinetBroj" Type="Int32" Nullable="false" />
+        </EntityType>
+        <Association Name="PredmetProfesor">
+          <End Type="ModelDB.Predmet" Role="Predmet" Multiplicity="0..1" />
+          <End Type="ModelDB.Profesor" Role="Profesor" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Predmet">
+              <PropertyRef Name="ImePredmet" />
+            </Principal>
+            <Dependent Role="Profesor">
+              <PropertyRef Name="PredmetImePredmet" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="Kabinet">
+          <Key>
+            <PropertyRef Name="Broj" />
+          </Key>
+          <Property Name="Broj" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Sprat" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Predmeti" Relationship="ModelDB.KabinetPredmet" FromRole="Kabinet" ToRole="Predmet" />
+          <NavigationProperty Name="PrivatnaSkola" Relationship="ModelDB.PrivatnaSkolaKabinet" FromRole="Kabinet" ToRole="PrivatnaSkola" />
+          <Property Name="PrivatnaSkolaRegBroj" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Cistis" Relationship="ModelDB.CistiKabinet" FromRole="Kabinet" ToRole="Cisti" />
+          <NavigationProperty Name="Cuvas" Relationship="ModelDB.CuvaKabinet" FromRole="Kabinet" ToRole="Cuva" />
+        </EntityType>
+        <Association Name="KabinetPredmet">
+          <End Type="ModelDB.Kabinet" Role="Kabinet" Multiplicity="1" />
+          <End Type="ModelDB.Predmet" Role="Predmet" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Kabinet">
+              <PropertyRef Name="Broj" />
+            </Principal>
+            <Dependent Role="Predmet">
+              <PropertyRef Name="KabinetBroj" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="PrivatnaSkolaKabinet">
+          <End Type="ModelDB.PrivatnaSkola" Role="PrivatnaSkola" Multiplicity="1" />
+          <End Type="ModelDB.Kabinet" Role="Kabinet" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PrivatnaSkola">
+              <PropertyRef Name="RegBroj" />
+            </Principal>
+            <Dependent Role="Kabinet">
+              <PropertyRef Name="PrivatnaSkolaRegBroj" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="Cisti" >
+          <Key>
+            <PropertyRef Name="SpremacicaJMBG_R" />
+            <PropertyRef Name="KabinetBroj" />
+          </Key>
+          <NavigationProperty Name="Spremacica" Relationship="ModelDB.SpremacicaCisti" FromRole="Cisti" ToRole="Spremacica" />
+          <Property Name="SpremacicaJMBG_R" Type="String" Nullable="false" />
+          <NavigationProperty Name="Kabinet" Relationship="ModelDB.CistiKabinet" FromRole="Cisti" ToRole="Kabinet" />
+          <Property Name="KabinetBroj" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Cuva" >
+          <Key>
+            <PropertyRef Name="KabinetBroj" />
+            <PropertyRef Name="ObezbedjenjeJMBG_R" />
+          </Key>
+          <NavigationProperty Name="Obezbedjenje" Relationship="ModelDB.CuvaObezbedjenje" FromRole="Cuva" ToRole="Obezbedjenje" />
+          <Property Name="ObezbedjenjeJMBG_R" Type="String" Nullable="false" />
+          <NavigationProperty Name="Kabinet" Relationship="ModelDB.CuvaKabinet" FromRole="Cuva" ToRole="Kabinet" />
+          <Property Name="KabinetBroj" Type="Int32" Nullable="false" />
+        </EntityType>
+        <Association Name="SpremacicaCisti">
+          <End Type="ModelDB.Spremacica" Role="Spremacica" Multiplicity="1" />
+          <End Type="ModelDB.Cisti" Role="Cisti" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Spremacica">
+              <PropertyRef Name="JMBG_R" />
+            </Principal>
+            <Dependent Role="Cisti">
+              <PropertyRef Name="SpremacicaJMBG_R" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="CistiKabinet">
+          <End Type="ModelDB.Cisti" Role="Cisti" Multiplicity="*" />
+          <End Type="ModelDB.Kabinet" Role="Kabinet" Multiplicity="1" />
+          <ReferentialConstraint>
+            <Principal Role="Kabinet">
+              <PropertyRef Name="Broj" />
+            </Principal>
+            <Dependent Role="Cisti">
+              <PropertyRef Name="KabinetBroj" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="CuvaObezbedjenje">
+          <End Type="ModelDB.Cuva" Role="Cuva" Multiplicity="*" />
+          <End Type="ModelDB.Obezbedjenje" Role="Obezbedjenje" Multiplicity="1" />
+          <ReferentialConstraint>
+            <Principal Role="Obezbedjenje">
+              <PropertyRef Name="JMBG_R" />
+            </Principal>
+            <Dependent Role="Cuva">
+              <PropertyRef Name="ObezbedjenjeJMBG_R" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="CuvaKabinet">
+          <End Type="ModelDB.Cuva" Role="Cuva" Multiplicity="*" />
+          <End Type="ModelDB.Kabinet" Role="Kabinet" Multiplicity="1" />
+          <ReferentialConstraint>
+            <Principal Role="Kabinet">
+              <PropertyRef Name="Broj" />
+            </Principal>
+            <Dependent Role="Cuva">
+              <PropertyRef Name="KabinetBroj" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="Vlasnik">
+          <Key>
+            <PropertyRef Name="JMBG_V" />
+          </Key>
+          <Property Name="JMBG_V" Type="String" Nullable="false" annotation:StoreGeneratedPattern="None" />
+          <Property Name="Ime_V" Type="String" Nullable="false" />
+          <Property Name="Prezime_V" Type="String" Nullable="false" />
+          <NavigationProperty Name="Drzis" Relationship="ModelDB.DrziVlasnik" FromRole="Vlasnik" ToRole="Drzi" />
+        </EntityType>
+        <EntityType Name="Drzi" >
+          <Key>
+            <PropertyRef Name="VlasnikJMBG_V" />
+            <PropertyRef Name="PrivatnaSkolaRegBroj" />
+          </Key>
+          <NavigationProperty Name="Vlasnik" Relationship="ModelDB.DrziVlasnik" FromRole="Drzi" ToRole="Vlasnik" />
+          <Property Name="VlasnikJMBG_V" Type="String" Nullable="false" />
+          <NavigationProperty Name="Direktor" Relationship="ModelDB.DrziDirektor" FromRole="Drzi" ToRole="Direktor" />
+          <Property Name="DirektorJMBG_R" Type="String" Nullable="false" />
+          <NavigationProperty Name="PrivatnaSkola" Relationship="ModelDB.PrivatnaSkolaDrzi" FromRole="Drzi" ToRole="PrivatnaSkola" />
+          <Property Name="PrivatnaSkolaRegBroj" Type="Int32" Nullable="false" />
+        </EntityType>
+        <Association Name="DrziVlasnik">
+          <End Type="ModelDB.Drzi" Role="Drzi" Multiplicity="*" />
+          <End Type="ModelDB.Vlasnik" Role="Vlasnik" Multiplicity="1" />
+          <ReferentialConstraint>
+            <Principal Role="Vlasnik">
+              <PropertyRef Name="JMBG_V" />
+            </Principal>
+            <Dependent Role="Drzi">
+              <PropertyRef Name="VlasnikJMBG_V" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="DrziDirektor">
+          <End Type="ModelDB.Drzi" Role="Drzi" Multiplicity="*" />
+          <End Type="ModelDB.Direktor" Role="Direktor" Multiplicity="1" />
+          <ReferentialConstraint>
+            <Principal Role="Direktor">
+              <PropertyRef Name="JMBG_R" />
+            </Principal>
+            <Dependent Role="Drzi">
+              <PropertyRef Name="DirektorJMBG_R" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="PrivatnaSkolaDrzi">
+          <End Type="ModelDB.PrivatnaSkola" Role="PrivatnaSkola" Multiplicity="1" />
+          <End Type="ModelDB.Drzi" Role="Drzi" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PrivatnaSkola">
+              <PropertyRef Name="RegBroj" />
+            </Principal>
+            <Dependent Role="Drzi">
+              <PropertyRef Name="PrivatnaSkolaRegBroj" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="PraviUgovor" >
+          <Key>
+            <PropertyRef Name="DirektorJMBG_R" />
+            <PropertyRef Name="UgovorBrojUgovora" />
+          </Key>
+          <Property Name="Nacin_Placanja" Type="String" Nullable="false" />
+          <NavigationProperty Name="Ugovor" Relationship="ModelDB.PraviUgovorUgovor" FromRole="PraviUgovor" ToRole="Ugovor" />
+          <Property Name="UgovorBrojUgovora" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Direktor" Relationship="ModelDB.PraviUgovorDirektor" FromRole="PraviUgovor" ToRole="Direktor" />
+          <Property Name="DirektorJMBG_R" Type="String" Nullable="false" />
+          <NavigationProperty Name="Roditelj" Relationship="ModelDB.PraviUgovorRoditelj" FromRole="PraviUgovor" ToRole="Roditelj" />
+          <Property Name="RoditeljJMBG_Rod" Type="String" Nullable="true" />
+        </EntityType>
+        <EntityType Name="Ugovor">
+          <Key>
+            <PropertyRef Name="BrojUgovora" />
+          </Key>
+          <Property Name="BrojUgovora" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <NavigationProperty Name="PraviUgovors" Relationship="ModelDB.PraviUgovorUgovor" FromRole="Ugovor" ToRole="PraviUgovor" />
+        </EntityType>
+        <Association Name="PraviUgovorUgovor">
+          <End Type="ModelDB.PraviUgovor" Role="PraviUgovor" Multiplicity="*" />
+          <End Type="ModelDB.Ugovor" Role="Ugovor" Multiplicity="1" />
+          <ReferentialConstraint>
+            <Principal Role="Ugovor">
+              <PropertyRef Name="BrojUgovora" />
+            </Principal>
+            <Dependent Role="PraviUgovor">
+              <PropertyRef Name="UgovorBrojUgovora" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="PraviUgovorDirektor">
+          <End Type="ModelDB.PraviUgovor" Role="PraviUgovor" Multiplicity="*" />
+          <End Type="ModelDB.Direktor" Role="Direktor" Multiplicity="1" />
+          <ReferentialConstraint>
+            <Principal Role="Direktor">
+              <PropertyRef Name="JMBG_R" />
+            </Principal>
+            <Dependent Role="PraviUgovor">
+              <PropertyRef Name="DirektorJMBG_R" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="PraviUgovorRoditelj">
+          <End Type="ModelDB.PraviUgovor" Role="PraviUgovor" Multiplicity="*" />
+          <End Type="ModelDB.Roditelj" Role="Roditelj" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="Roditelj">
+              <PropertyRef Name="JMBG_Rod" />
+            </Principal>
+            <Dependent Role="PraviUgovor">
+              <PropertyRef Name="RoditeljJMBG_Rod" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+    <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="ModelDBStoreContainer" CdmEntityContainer="ModelDBContext">
+    <EntitySetMapping Name="Gradovi">
+      <EntityTypeMapping TypeName="IsTypeOf(ModelDB.Grad)">
+        <MappingFragment StoreEntitySet="Gradovi">
+          <ScalarProperty Name="PostanskiBroj" ColumnName="PostanskiBroj" />
+          <ScalarProperty Name="ImeGrada" ColumnName="ImeGrada" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Ucenici">
+      <EntityTypeMapping TypeName="IsTypeOf(ModelDB.Ucenik)">
+        <MappingFragment StoreEntitySet="Ucenici">
+          <ScalarProperty Name="JMBG_U" ColumnName="JMBG_U" />
+          <ScalarProperty Name="Ime_U" ColumnName="Ime_U" />
+          <ScalarProperty Name="Prezime_U" ColumnName="Prezime_U" />
+          <ScalarProperty Name="Godine" ColumnName="Godine" />
+          <ScalarProperty Name="RoditeljJMBG_Rod" ColumnName="RoditeljJMBG_Rod" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Zivis">
+      <EntityTypeMapping TypeName="IsTypeOf(ModelDB.Zivi)">
+        <MappingFragment StoreEntitySet="Zivis">
+          <ScalarProperty Name="GradPostanskiBroj" ColumnName="GradPostanskiBroj" />
+          <ScalarProperty Name="UcenikJMBG_U" ColumnName="UcenikJMBG_U" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Roditelji">
+      <EntityTypeMapping TypeName="IsTypeOf(ModelDB.Roditelj)">
+        <MappingFragment StoreEntitySet="Roditelji">
+          <ScalarProperty Name="JMBG_Rod" ColumnName="JMBG_Rod" />
+          <ScalarProperty Name="Ime_Rod" ColumnName="Ime_Rod" />
+          <ScalarProperty Name="Prezime_Rod" ColumnName="Prezime_Rod" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="PrivatneSkole">
+      <EntityTypeMapping TypeName="IsTypeOf(ModelDB.PrivatnaSkola)">
+        <MappingFragment StoreEntitySet="PrivatneSkole">
+          <ScalarProperty Name="RegBroj" ColumnName="RegBroj" />
+          <ScalarProperty Name="BrojTelefon" ColumnName="BrojTelefon" />
+          <ScalarProperty Name="ImeSkole" ColumnName="ImeSkole" />
+          <ScalarProperty Name="GradPostanskiBroj" ColumnName="GradPostanskiBroj" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Pohadjas">
+      <EntityTypeMapping TypeName="IsTypeOf(ModelDB.Pohadja)">
+        <MappingFragment StoreEntitySet="Pohadjas">
+          <ScalarProperty Name="UcenikJMBG_U" ColumnName="UcenikJMBG_U" />
+          <ScalarProperty Name="PrivatnaSkolaRegBroj" ColumnName="PrivatnaSkolaRegBroj" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Zaposlenis">
+      <EntityTypeMapping TypeName="IsTypeOf(ModelDB.Zaposleni)">
+        <MappingFragment StoreEntitySet="Zaposlenis">
+          <ScalarProperty Name="JMBG_R" ColumnName="JMBG_R" />
+          <ScalarProperty Name="Godine" ColumnName="Godine" />
+          <ScalarProperty Name="Ime_R" ColumnName="Ime_R" />
+          <ScalarProperty Name="Prezime_R" ColumnName="Prezime_R" />
+          <ScalarProperty Name="PrivatnaSkolaRegBroj" ColumnName="PrivatnaSkolaRegBroj" />
+        </MappingFragment>
+      </EntityTypeMapping>
+      <EntityTypeMapping TypeName="IsTypeOf(ModelDB.Profesor)">
+        <MappingFragment StoreEntitySet="Zaposlenis_Profesor">
+          <ScalarProperty Name="JMBG_R" ColumnName="JMBG_R" />
+          <ScalarProperty Name="PredmetImePredmet" ColumnName="PredmetImePredmet" />
+        </MappingFragment>
+      </EntityTypeMapping>
+      <EntityTypeMapping TypeName="IsTypeOf(ModelDB.Spremacica)">
+        <MappingFragment StoreEntitySet="Zaposlenis_Spremacica">
+          <ScalarProperty Name="JMBG_R" ColumnName="JMBG_R" />
+        </MappingFragment>
+      </EntityTypeMapping>
+      <EntityTypeMapping TypeName="IsTypeOf(ModelDB.Obezbedjenje)">
+        <MappingFragment StoreEntitySet="Zaposlenis_Obezbedjenje">
+          <ScalarProperty Name="JMBG_R" ColumnName="JMBG_R" />
+        </MappingFragment>
+      </EntityTypeMapping>
+      <EntityTypeMapping TypeName="IsTypeOf(ModelDB.Direktor)">
+        <MappingFragment StoreEntitySet="Zaposlenis_Direktor">
+          <ScalarProperty Name="JMBG_R" ColumnName="JMBG_R" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Predmeti">
+      <EntityTypeMapping TypeName="IsTypeOf(ModelDB.Predmet)">
+        <MappingFragment StoreEntitySet="Predmeti">
+          <ScalarProperty Name="ImePredmet" ColumnName="ImePredmet" />
+          <ScalarProperty Name="BrojCasova" ColumnName="BrojCasova" />
+          <ScalarProperty Name="KabinetBroj" ColumnName="KabinetBroj" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Kabineti">
+      <EntityTypeMapping TypeName="IsTypeOf(ModelDB.Kabinet)">
+        <MappingFragment StoreEntitySet="Kabineti">
+          <ScalarProperty Name="Broj" ColumnName="Broj" />
+          <ScalarProperty Name="Sprat" ColumnName="Sprat" />
+          <ScalarProperty Name="PrivatnaSkolaRegBroj" ColumnName="PrivatnaSkolaRegBroj" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Cistis">
+      <EntityTypeMapping TypeName="IsTypeOf(ModelDB.Cisti)">
+        <MappingFragment StoreEntitySet="Cistis">
+          <ScalarProperty Name="SpremacicaJMBG_R" ColumnName="SpremacicaJMBG_R" />
+          <ScalarProperty Name="KabinetBroj" ColumnName="KabinetBroj" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Cuvas">
+      <EntityTypeMapping TypeName="IsTypeOf(ModelDB.Cuva)">
+        <MappingFragment StoreEntitySet="Cuvas">
+          <ScalarProperty Name="KabinetBroj" ColumnName="KabinetBroj" />
+          <ScalarProperty Name="ObezbedjenjeJMBG_R" ColumnName="ObezbedjenjeJMBG_R" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Vlasnici">
+      <EntityTypeMapping TypeName="IsTypeOf(ModelDB.Vlasnik)">
+        <MappingFragment StoreEntitySet="Vlasnici">
+          <ScalarProperty Name="JMBG_V" ColumnName="JMBG_V" />
+          <ScalarProperty Name="Ime_V" ColumnName="Ime_V" />
+          <ScalarProperty Name="Prezime_V" ColumnName="Prezime_V" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Drzis">
+      <EntityTypeMapping TypeName="IsTypeOf(ModelDB.Drzi)">
+        <MappingFragment StoreEntitySet="Drzis">
+          <ScalarProperty Name="VlasnikJMBG_V" ColumnName="VlasnikJMBG_V" />
+          <ScalarProperty Name="PrivatnaSkolaRegBroj" ColumnName="PrivatnaSkolaRegBroj" />
+          <ScalarProperty Name="DirektorJMBG_R" ColumnName="DirektorJMBG_R" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="PraviUgovors">
+      <EntityTypeMapping TypeName="IsTypeOf(ModelDB.PraviUgovor)">
+        <MappingFragment StoreEntitySet="PraviUgovors">
+          <ScalarProperty Name="DirektorJMBG_R" ColumnName="DirektorJMBG_R" />
+          <ScalarProperty Name="UgovorBrojUgovora" ColumnName="UgovorBrojUgovora" />
+          <ScalarProperty Name="Nacin_Placanja" ColumnName="Nacin_Placanja" />
+          <ScalarProperty Name="RoditeljJMBG_Rod" ColumnName="RoditeljJMBG_Rod" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Ugovori">
+      <EntityTypeMapping TypeName="IsTypeOf(ModelDB.Ugovor)">
+        <MappingFragment StoreEntitySet="Ugovori">
+          <ScalarProperty Name="BrojUgovora" ColumnName="BrojUgovora" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping></edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <edmx:Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </edmx:Connection>
+    <edmx:Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="True" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+        <DesignerProperty Name="UseLegacyProvider" Value="False" />
+      </DesignerInfoPropertySet>
+    </edmx:Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

@@ -1,0 +1,34 @@
+﻿<Window x:Class="PrivatnaSkolaApp.Views.KabinetWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:PrivatnaSkolaApp.Views"
+        mc:Ignorable="d"
+        Title="KabinetWindow" Height="450" Width="800" Background="Gray">
+    <Grid>
+        <DataGrid x:Name="Kabineti" SelectionMode="Single" AutoGenerateColumns="False" Margin="10,130,9.6,0">
+            <DataGrid.Columns>
+                <DataGridTextColumn x:Name="BrojKabineta" Header="Broj kabineta" Binding="{Binding Broj}"/>
+                <DataGridTextColumn x:Name="Sprat" Header="Sprat kabineta" Binding="{Binding Sprat}"/>
+                <DataGridTextColumn x:Name="SkolaKabinet" Header="Skola" Binding="{Binding PrivatnaSkolaRegBroj}"/>
+                <DataGridTemplateColumn>
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <Button x:Name="DEL" Content="Obrisi" Click="DEL_Click"></Button>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+
+            </DataGrid.Columns>
+        </DataGrid>
+        <Label Content="Broj kabineta" HorizontalAlignment="Left" Margin="18,21,0,0" VerticalAlignment="Top"/>
+        <Label Content="Sprat" HorizontalAlignment="Left" Margin="18,71,0,0" VerticalAlignment="Top" Width="80"/>
+        <TextBox x:Name="TextBoxBroj" HorizontalAlignment="Left" Height="23" Margin="103,24,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120"/>
+        <TextBox x:Name="TextBoxSprat" HorizontalAlignment="Left" Height="23" Margin="103,71,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120"/>
+        <Label Content="Skola" HorizontalAlignment="Left" Margin="325,21,0,0" VerticalAlignment="Top"/>
+        <ComboBox x:Name="SkoleComboBox" ItemsSource="{Binding Skole}" SelectedValuePath="RegBroj" DisplayMemberPath="ImeSkole" HorizontalAlignment="Left" Margin="368,24,0,0" VerticalAlignment="Top" Width="120"/>
+        <Button Content="Dodaj Kabinet" HorizontalAlignment="Left" Margin="688,97,0,0" VerticalAlignment="Top" Width="96" Click="Button_Click"/>
+
+    </Grid>
+</Window>

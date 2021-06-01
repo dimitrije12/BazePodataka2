@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.28307.1145
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProjekatBP", "ProjekatBP\ProjekatBP.csproj", "{DB409003-AC6B-475E-8617-7D7F58A6743C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PrivatnaSkolaApp", "PrivatnaSkolaApp\PrivatnaSkolaApp.csproj", "{086AA7C6-9002-4160-B251-2F5C869C2497}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{DB409003-AC6B-475E-8617-7D7F58A6743C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DB409003-AC6B-475E-8617-7D7F58A6743C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DB409003-AC6B-475E-8617-7D7F58A6743C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DB409003-AC6B-475E-8617-7D7F58A6743C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{086AA7C6-9002-4160-B251-2F5C869C2497}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{086AA7C6-9002-4160-B251-2F5C869C2497}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{086AA7C6-9002-4160-B251-2F5C869C2497}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{086AA7C6-9002-4160-B251-2F5C869C2497}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {F5BC35C4-F6EB-49C1-BB5F-2F0C36351D32}
+	EndGlobalSection
+EndGlobal

@@ -1,0 +1,20 @@
+﻿<Window x:Class="PrivatnaSkolaApp.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:PrivatnaSkolaApp"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800" Background="Gray">
+    <Grid>
+        <Button x:Name="GradoviWindow" Content="Gradovi" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Width="142" Click="GradoviWindowButton" Height="51"/>
+        <Button x:Name="RoditeljWindow" Content="Roditelji" HorizontalAlignment="Left" Margin="323,10,0,0" VerticalAlignment="Top" Width="132" Height="52" Click="RoditeljWindow_Click"/>
+        <Button Content="Vlasnici" HorizontalAlignment="Left" Margin="624,9,0,0" VerticalAlignment="Top" Width="141" Click="Button_Click" Height="52"/>
+        <Button Content="Privatne Skole" HorizontalAlignment="Left" Margin="10,106,0,0" VerticalAlignment="Top" Width="142" Height="56" Click="Button_Click_1"/>
+        <Button Content="Ucenici" HorizontalAlignment="Left" Margin="323,91,0,0" VerticalAlignment="Top" Width="132" Height="26" Click="Button_Click_2"/>
+        <Button Content="Pohadja" HorizontalAlignment="Left" Margin="323,122,0,0" VerticalAlignment="Top" Width="66" Click="Button_Click_3"/>
+        <Button Content="Zivi" HorizontalAlignment="Left" Margin="394,122,0,0" VerticalAlignment="Top" Width="61" Click="Button_Click_4"/>
+        <Button Content="Kabineti" HorizontalAlignment="Left" Margin="10,222,0,0" VerticalAlignment="Top" Width="142" Height="56" Click="Button_Click_5"/>
+
+    </Grid>
+</Window>
