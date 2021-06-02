@@ -24,6 +24,7 @@ namespace PrivatnaSkolaApp.Views
     public partial class Obezbedjenje : Window
     {
         private ObezbedjenjCRUD db;
+        private string id = "";
         public BindingList<Obezbedjenje> obezbedjenje;
         private BindingList<Zaposleni> zap;
         public BindableCollection<PrivatnaSkola> skole;
@@ -55,23 +56,64 @@ namespace PrivatnaSkolaApp.Views
         {
             try
             {
-                ProjekatBP.Obezbedjenje s = new ProjekatBP.Obezbedjenje
+                if (id == "")
                 {
-                    JMBG_R = TextBoxJMBG.Text,
-                    Godine = GodineTB.Text,
-                    Ime_R = TextBoxName.Text,
-                    Prezime_R = TextBoxPrezime.Text,
-                    PrivatnaSkolaRegBroj = Int32.Parse(((PrivatnaSkola)ComboBoxSkola.SelectedItem).RegBroj.ToString()),
-                    //PredmetImePredmet = ((Predmet)ComboBoxPredmeti.SelectedItem).ImePredmet,
-                    Uloga = "Obezbedjenje"
-                };
-                db.AddObezbedjenje(s);
+                    ProjekatBP.Obezbedjenje s = new ProjekatBP.Obezbedjenje
+                    {
+                        JMBG_R = TextBoxJMBG.Text,
+                        Godine = GodineTB.Text,
+                        Ime_R = TextBoxName.Text,
+                        Prezime_R = TextBoxPrezime.Text,
+                        PrivatnaSkolaRegBroj = Int32.Parse(((PrivatnaSkola)ComboBoxSkola.SelectedItem).RegBroj.ToString()),
+                        //PredmetImePredmet = ((Predmet)ComboBoxPredmeti.SelectedItem).ImePredmet,
+                        Uloga = "Obezbedjenje"
+                    };
+                    db.AddObezbedjenje(s);
+                    UpdateData();
+                }
+                else
+                {
+                    ProjekatBP.Obezbedjenje p = ((ProjekatBP.Obezbedjenje)db.GetZaposleni(id));
+                    
+                    p.Ime_R = TextBoxName.Text;
+                    p.Prezime_R = TextBoxPrezime.Text;
+                    p.Godine = GodineTB.Text;
+                    p.Uloga = "Obezbedjenje";
+                
+                    db.UpdateData();
+                }
                 UpdateData();
+                DeleteInput();
             }
             catch
             {
 
             }
         }
+
+        private void EDIT_Click(object sender, RoutedEventArgs e)
+        {
+            ProjekatBP.Obezbedjenje r = ((FrameworkElement)sender).DataContext as ProjekatBP.Obezbedjenje;
+            if (r != null)
+            {
+                id = r.JMBG_R;
+                TextBoxJMBG.Text = r.JMBG_R;
+                TextBoxName.Text = r.Ime_R;
+                GodineTB.Text = r.Godine.ToString();
+                TextBoxPrezime.Text = r.Prezime_R;
+            }
+        }
+        private void DeleteInput()
+        {
+            TextBoxJMBG.Text = String.Empty;
+            TextBoxName.Text = String.Empty;
+            TextBoxPrezime.Text = String.Empty;
+            GodineTB.Text = String.Empty;
+            id = "";
+        }
+
+
     }
+        
+    
 }

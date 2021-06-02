@@ -15,6 +15,15 @@ namespace PrivatnaSkolaApp.CRUD
             db = new ModelDBContext();
         }
 
+        public void UpdateSkola()
+        {
+            db.SaveChanges();
+        }
+        public PrivatnaSkola GetSkola(int a)
+        {
+            return db.PrivatneSkole.Find(a);
+        }
+
         public bool AddPrivSk(PrivatnaSkola s)
         {
             try
@@ -57,6 +66,7 @@ namespace PrivatnaSkolaApp.CRUD
                     dc.DeleteDrzi(dd);
                 }
 
+                
 
                 List<Zaposleni> zap = db.Zaposlenis.Where(x => x.PrivatnaSkolaRegBroj == s.RegBroj).ToList();
                 ZaposleniCRUD zc = new ZaposleniCRUD();

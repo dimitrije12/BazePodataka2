@@ -14,7 +14,14 @@ namespace PrivatnaSkolaApp.CRUD
         {
             db = new ModelDBContext();
         }
-
+        public void UpdateData()
+        {
+            db.SaveChanges();
+        }
+        public Zaposleni GetZaposleni(string jmbg)
+        {
+             return db.Zaposlenis.Find(jmbg);
+        }
         public void AddProfesor(Profesor p)
         {
             db.Zaposlenis.Add(p);
@@ -24,7 +31,7 @@ namespace PrivatnaSkolaApp.CRUD
         {
             try
             {
-                db.Zaposlenis.Remove(db.Zaposlenis.Find(z.Ime_R));
+                db.Zaposlenis.Remove(db.Zaposlenis.Find(z.JMBG_R));
                 db.SaveChanges();
                 return true;
             }

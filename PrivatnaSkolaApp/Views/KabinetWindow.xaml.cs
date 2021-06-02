@@ -24,6 +24,7 @@ namespace PrivatnaSkolaApp.Views
     public partial class KabinetWindow : Window
     {
         private KabinetCRUD db;
+        private int id = -1;
         public BindingList<Kabinet> Kabinetii;
         public BindableCollection<PrivatnaSkola> PrivatneSkole;
         public KabinetWindow()
@@ -56,23 +57,57 @@ namespace PrivatnaSkolaApp.Views
         {
             try
             {
-                Kabinet k = new Kabinet
+                if (id == -1)
                 {
-                    Broj = Int32.Parse(TextBoxBroj.Text),
-                    Sprat = Int32.Parse(TextBoxSprat.Text),
-                    PrivatnaSkolaRegBroj = Int32.Parse(((PrivatnaSkola)SkoleComboBox.SelectedItem).RegBroj.ToString())
-                };
-                db.AddNewKabinet(k);
-                Kabinetii = new BindingList<Kabinet>(db.GetAllKabinet().ToList());
-                PrivatneSkole = new BindableCollection<PrivatnaSkola>(db.GetAllSkole().ToList());
-                SkoleComboBox.ItemsSource = PrivatneSkole;
-                Kabineti.ItemsSource = Kabinetii;
-
+                    Kabinet k = new Kabinet
+                    {
+                        Broj = Int32.Parse(TextBoxBroj.Text),
+                        Sprat = Int32.Parse(TextBoxSprat.Text),
+                        PrivatnaSkolaRegBroj = Int32.Parse(((PrivatnaSkola)SkoleComboBox.SelectedItem).RegBroj.ToString())
+                    };
+                    db.AddNewKabinet(k);
+                    Kabinetii = new BindingList<Kabinet>(db.GetAllKabinet().ToList());
+                    PrivatneSkole = new BindableCollection<PrivatnaSkola>(db.GetAllSkole().ToList());
+                    SkoleComboBox.ItemsSource = PrivatneSkole;
+                    Kabineti.ItemsSource = Kabinetii;
+                }
+                else
+                {
+                    Kabinet k = db.GetKabinet(id);
+                    k.Sprat = Int32.Parse(TextBoxSprat.Text);
+                    k.PrivatnaSkolaRegBroj = Int32.Parse(((PrivatnaSkola)SkoleComboBox.SelectedItem).RegBroj.ToString());
+                    db.UpdateKabinet();
+                    Kabinetii = new BindingList<Kabinet>(db.GetAllKabinet().ToList());
+                    PrivatneSkole = new BindableCollection<PrivatnaSkola>(db.GetAllSkole().ToList());
+                    SkoleComboBox.ItemsSource = PrivatneSkole;
+                    Kabineti.ItemsSource = Kabinetii;
+                }
+                ResetInput();
             }
             catch
             {
 
             }
+        }
+
+        private void ResetInput()
+        {
+            TextBoxSprat.Text = String.Empty;
+            TextBoxBroj.Text = String.Empty;
+            id = -1;
+        }
+        private void EDIT_Click(object sender, RoutedEventArgs e)
+        {
+            Kabinet r = ((FrameworkElement)sender).DataContext as Kabinet;
+            if (r != null)
+            {
+                TextBoxBroj.Text = r.Broj.ToString() ;
+                TextBoxSprat.Text = r.Sprat.ToString();
+                SkoleComboBox.Text = r.PrivatnaSkolaRegBroj.ToString();
+                id = r.Broj;
+                
+            }
+
         }
     }
 }

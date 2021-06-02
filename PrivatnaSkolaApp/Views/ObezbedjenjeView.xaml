@@ -5,14 +5,22 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:PrivatnaSkolaApp.Views"
         mc:Ignorable="d"
-        Title="Obezbedjenje" Height="450" Width="800">
+        Title="Obezbedjenje" Height="450" Width="800" Background="Gray">
     <Grid>
         <DataGrid x:Name="ObezbedjenjeList" SelectionMode="Single"  IsReadOnly="True" AutoGenerateColumns="False" Margin="10,145,9.6,0">
             <DataGrid.Columns>
                 <DataGridTextColumn x:Name="ImeObezbedjenja" Header="Ime obezbedjenja" Binding="{Binding Ime_R}"/>
                 <DataGridTextColumn x:Name="PrezimeObezbedjenja" Header="Prezime cistacice" Binding="{Binding Prezime_R}"/>
+                <DataGridTextColumn x:Name="Godine" Header="Godine" Binding="{Binding Godine}"/>
                 <DataGridTextColumn x:Name="JMBGPbezb" Header="JMBG obezbedjenja" Binding="{Binding JMBG_R}"/>
                 <DataGridTextColumn x:Name="SkolaP" Header="Skola" Binding="{Binding PrivatnaSkolaRegBroj}" />
+                <DataGridTemplateColumn>
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <Button x:Name="EDIT" Content="Edit" Click="EDIT_Click"/>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
                 <DataGridTemplateColumn>
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>

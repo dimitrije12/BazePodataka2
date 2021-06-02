@@ -11,8 +11,16 @@
             <DataGrid.Columns>
                 <DataGridTextColumn x:Name="ImeCistacice" Header="Ime cistacice" Binding="{Binding Ime_R}"/>
                 <DataGridTextColumn x:Name="PrezimeCistacice" Header="Prezime cistacice" Binding="{Binding Prezime_R}"/>
+                <DataGridTextColumn x:Name="Godine" Header="Godine" Binding="{Binding Godine}"/>
                 <DataGridTextColumn x:Name="JMBGCist" Header="JMBG cistacie" Binding="{Binding JMBG_R}"/>
                 <DataGridTextColumn x:Name="SkolaP" Header="Skola" Binding="{Binding PrivatnaSkolaRegBroj}" />
+                <DataGridTemplateColumn>
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <Button x:Name="EDIT" Content="Edit" Click="EDIT_Click"/>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
                 <DataGridTemplateColumn>
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>

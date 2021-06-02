@@ -7,10 +7,10 @@
         mc:Ignorable="d"
         Title="PotpisiUgovor" Height="450" Width="800" Background="Gray">
     <Grid>
-        <DataGrid x:Name="PotpisDokumenata" SelectionMode="Single" IsReadOnly="True" AutoGenerateColumns="False" Margin="10,176,9.6,0">
+        <DataGrid x:Name="UgovorList" SelectionMode="Single" IsReadOnly="True" AutoGenerateColumns="False" Margin="10,176,9.6,0">
             <DataGrid.Columns>
                 <DataGridTextColumn x:Name="BrojUgovora" Header="Broj ugovora" Binding="{Binding UgovorBrojUgovora}" />
-                <DataGridTextColumn x:Name="NacinPlac" Header="Nacin placanja" Binding="{Binding NacinPlacanja}"/>
+                <DataGridTextColumn x:Name="NacinPlac" Header="Nacin placanja" Binding="{Binding Nacin_Placanja}"/>
                 <DataGridTextColumn x:Name="JMBGrod" Header="JMBG roditelja" Binding="{Binding RoditeljJMBG_Rod}" />
                 <DataGridTextColumn x:Name="JMBGD" Header="JMBG direktora" Binding="{Binding DirektorJMBG_R}"/>
                 <DataGridTemplateColumn>

@@ -24,6 +24,7 @@ namespace PrivatnaSkolaApp.Views
     public partial class PredmetWindow : Window
     {
         PredmetCRUD db;
+        private string idd = "";
         public BindingList<Predmet> predmeti;
         public BindableCollection<Kabinet> kabineti;
         public PredmetWindow()
@@ -57,18 +58,50 @@ namespace PrivatnaSkolaApp.Views
         {
             try
             {
-                Predmet p = new Predmet
+                if (idd == "")
                 {
-                    ImePredmet = TextBoxImePredmeta.Text,
-                    BrojCasova = Int32.Parse(TextBoxBrojCasova.Text),
-                    KabinetBroj = Int32.Parse(((Kabinet)ComboBoxKabinet.SelectedItem).Broj.ToString())
-                };
-                db.AddPredmet(p);
+                    Predmet p = new Predmet
+                    {
+                        ImePredmet = TextBoxImePredmeta.Text,
+                        BrojCasova = Int32.Parse(TextBoxBrojCasova.Text),
+                        KabinetBroj = Int32.Parse(((Kabinet)ComboBoxKabinet.SelectedItem).Broj.ToString())
+                    };
+                    db.AddPredmet(p);
+                    updateData();
+
+                }
+                else
+                {
+                    Predmet p = db.GetPredmet(idd);
+                    p.BrojCasova = Int32.Parse(TextBoxBrojCasova.Text);
+                    p.KabinetBroj = Int32.Parse(((Kabinet)ComboBoxKabinet.SelectedItem).Broj.ToString());
+                    db.UpdatePredmet();
+                    DeleteInput();
+                }
                 updateData();
             }
             catch
             {
 
+            }
+        }
+
+        private void DeleteInput()
+        {
+            TextBoxBrojCasova.Text = String.Empty;
+            TextBoxImePredmeta.Text = String.Empty;
+            ComboBoxKabinet.SelectedIndex = 0;
+        }
+
+        private void EDIT_Click(object sender, RoutedEventArgs e)
+        {
+            Predmet r = ((FrameworkElement)sender).DataContext as Predmet;
+            if (r != null)
+            {
+                TextBoxImePredmeta.Text = r.ImePredmet;
+                TextBoxBrojCasova.Text = r.BrojCasova.ToString();
+                ComboBoxKabinet.SelectedItem = r.KabinetBroj;
+                idd = r.ImePredmet;
             }
         }
     }

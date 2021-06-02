@@ -27,6 +27,7 @@ namespace PrivatnaSkolaApp.Views
         private UcenikCRUD db;
         public BindingList<Ucenik> Ucenici;
         public BindableCollection<Roditelj> Roditelji;
+        string editString = "";
 
         public UcenikWindow()
         {
@@ -42,27 +43,53 @@ namespace PrivatnaSkolaApp.Views
         {
             try
             {
-                Ucenik u = new Ucenik()
+                if (editString.Equals(""))
                 {
-                    Ime_U = TextBoxIme.Text,
-                    Prezime_U = TextBoxPrezime.Text,
-                    JMBG_U = TextBoxJMBG.Text,
-                    Godine = TextBoxGodine.Text,
-                    RoditeljJMBG_Rod = ((Roditelj)RoditeljCombBox.SelectedItem).JMBG_Rod
+                    Ucenik u = new Ucenik()
+                    {
+                        Ime_U = TextBoxIme.Text,
+                        Prezime_U = TextBoxPrezime.Text,
+                        JMBG_U = TextBoxJMBG.Text,
+                        Godine = TextBoxGodine.Text,
+                        RoditeljJMBG_Rod = ((Roditelj)RoditeljCombBox.SelectedItem).JMBG_Rod
 
-                };
-                db.AddUcenik(u);
-                Ucenici = new BindingList<Ucenik>(db.GetAllUcenici().ToList());
-                Roditelji = new BindableCollection<Roditelj>(db.GetAllRoditelji().ToList());
-                UceniciList.ItemsSource = Ucenici;
-                RoditeljCombBox.ItemsSource = Roditelji;
+                    };
+                    db.AddUcenik(u);
+                    Ucenici = new BindingList<Ucenik>(db.GetAllUcenici().ToList());
+                    Roditelji = new BindableCollection<Roditelj>(db.GetAllRoditelji().ToList());
+                    UceniciList.ItemsSource = Ucenici;
+                    RoditeljCombBox.ItemsSource = Roditelji;
+                }
+                else
+                {
+                    Ucenik u = db.GetUcenikByKey(editString);
+                   
+                    u.Godine = TextBoxGodine.Text;
+                    u.Ime_U = TextBoxIme.Text;
+                    u.Prezime_U = TextBoxPrezime.Text;
+                    u.RoditeljJMBG_Rod = RoditeljCombBox.Text;
+
+                    db.updateUcenik();
+                    Ucenici = new BindingList<Ucenik>(db.GetAllUcenici().ToList());
+                    Roditelji = new BindableCollection<Roditelj>(db.GetAllRoditelji().ToList());
+                    UceniciList.ItemsSource = Ucenici;
+                    RoditeljCombBox.ItemsSource = Roditelji;
+                }
+                ClearForm();
             }
             catch
             {
 
             }
         }
-
+        private void ClearForm()
+        {
+            TextBoxIme.Text = String.Empty;
+            TextBoxPrezime.Text = String.Empty;
+            TextBoxGodine.Text = String.Empty;
+            TextBoxJMBG.Text = String.Empty;
+            this.editString = "";
+        }
         private void DEL_Click(object sender, RoutedEventArgs e)
         {
             Ucenik r = ((FrameworkElement)sender).DataContext as Ucenik;
@@ -74,6 +101,24 @@ namespace PrivatnaSkolaApp.Views
                 UceniciList.ItemsSource = Ucenici;
                 RoditeljCombBox.ItemsSource = Roditelji;
             }
+        }
+
+        private void EDIT_Click(object sender, RoutedEventArgs e)
+        {
+
+            Ucenik u = ((FrameworkElement)sender).DataContext as Ucenik;
+            if (u != null)
+            {
+                TextBoxJMBG.Text = u.JMBG_U;
+                TextBoxGodine.Text = u.Godine.ToString();
+                TextBoxIme.Text = u.Ime_U;
+                TextBoxPrezime.Text = u.Prezime_U;
+                RoditeljCombBox.Text = u.RoditeljJMBG_Rod;
+                this.editString = u.JMBG_U;
+            }
+
+          
+
         }
     }
 }

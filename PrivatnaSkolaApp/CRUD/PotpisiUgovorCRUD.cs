@@ -32,7 +32,7 @@ namespace PrivatnaSkolaApp.CRUD
         {
             try
             {
-                db.PraviUgovors.Remove(db.PraviUgovors.Find(PU.UgovorBrojUgovora, PU.DirektorJMBG_R));
+                db.PraviUgovors.Remove(PU);
                 db.SaveChanges();
             }
             catch
@@ -41,8 +41,11 @@ namespace PrivatnaSkolaApp.CRUD
             }
         }
 
-        
-        public IEnumerable<Roditelj> GetRoditeljList()
+        public IEnumerable<PraviUgovor> GetAllUgovori()
+        {
+            return db.PraviUgovors;
+        }
+        public IEnumerable<Roditelj> GetRoditelj()
         {
             return db.Roditelji;
         }

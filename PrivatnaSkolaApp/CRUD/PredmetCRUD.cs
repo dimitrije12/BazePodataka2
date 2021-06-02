@@ -14,6 +14,14 @@ namespace PrivatnaSkolaApp.CRUD
         {
             db = new ModelDBContext();
         }
+        public Predmet GetPredmet(string IME)
+        {
+            return db.Predmeti.Find(IME);
+        }
+        public void UpdatePredmet()
+        {
+            db.SaveChanges();
+        }
 
         public bool AddPredmet(Predmet p)
         {

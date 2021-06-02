@@ -20,7 +20,6 @@
     <EntitySet Name="Vlasnici" EntityType="ModelDB.Store.Vlasnici" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="Drzis" EntityType="ModelDB.Store.Drzis" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="PraviUgovors" EntityType="ModelDB.Store.PraviUgovors" store:Type="Tables" Schema="dbo" />
-    <EntitySet Name="Ugovori" EntityType="ModelDB.Store.Ugovori" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="Zaposlenis_Profesor" EntityType="ModelDB.Store.Zaposlenis_Profesor" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="Zaposlenis_Spremacica" EntityType="ModelDB.Store.Zaposlenis_Spremacica" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="Zaposlenis_Obezbedjenje" EntityType="ModelDB.Store.Zaposlenis_Obezbedjenje" store:Type="Tables" Schema="dbo" />
@@ -92,10 +91,6 @@
     <AssociationSet Name="PrivatnaSkolaDrzi" Association="ModelDB.Store.PrivatnaSkolaDrzi">
       <End Role="PrivatnaSkola" EntitySet="PrivatneSkole" />
       <End Role="Drzi" EntitySet="Drzis" />
-    </AssociationSet>
-    <AssociationSet Name="PraviUgovorUgovor" Association="ModelDB.Store.PraviUgovorUgovor">
-      <End Role="PraviUgovor" EntitySet="PraviUgovors" />
-      <End Role="Ugovor" EntitySet="Ugovori" />
     </AssociationSet>
     <AssociationSet Name="PraviUgovorDirektor" Association="ModelDB.Store.PraviUgovorDirektor">
       <End Role="PraviUgovor" EntitySet="PraviUgovors" />
@@ -241,12 +236,6 @@
     <Property Name="UgovorBrojUgovora" Type="int" Nullable="false" />
     <Property Name="DirektorJMBG_R" Type="nvarchar(max)" Nullable="false" />
     <Property Name="RoditeljJMBG_Rod" Type="nvarchar(max)" Nullable="true" />
-  </EntityType>
-  <EntityType Name="Ugovori">
-    <Key>
-      <PropertyRef Name="BrojUgovora" />
-    </Key>
-    <Property Name="BrojUgovora" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
   </EntityType>
   <EntityType Name="Zaposlenis_Profesor">
     <Key>
@@ -477,18 +466,6 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="PraviUgovorUgovor">
-    <End Role="PraviUgovor" Type="ModelDB.Store.PraviUgovors" Multiplicity="*" />
-    <End Role="Ugovor" Type="ModelDB.Store.Ugovori" Multiplicity="1" />
-    <ReferentialConstraint>
-      <Principal Role="Ugovor">
-        <PropertyRef Name="BrojUgovora" />
-      </Principal>
-      <Dependent Role="PraviUgovor">
-        <PropertyRef Name="UgovorBrojUgovora" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
   <Association Name="PraviUgovorDirektor">
     <End Role="PraviUgovor" Type="ModelDB.Store.PraviUgovors" Multiplicity="*" />
     <End Role="Direktor" Type="ModelDB.Store.Zaposlenis_Direktor" Multiplicity="1" />
@@ -656,11 +633,6 @@
             <End Role="Drzi" EntitySet="Drzis" />
           </AssociationSet>
           <EntitySet Name="PraviUgovors" EntityType="ModelDB.PraviUgovor" />
-          <EntitySet Name="Ugovori" EntityType="ModelDB.Ugovor" />
-          <AssociationSet Name="PraviUgovorUgovor" Association="ModelDB.PraviUgovorUgovor">
-            <End Role="PraviUgovor" EntitySet="PraviUgovors" />
-            <End Role="Ugovor" EntitySet="Ugovori" />
-          </AssociationSet>
           <AssociationSet Name="PraviUgovorDirektor" Association="ModelDB.PraviUgovorDirektor">
             <End Role="PraviUgovor" EntitySet="PraviUgovors" />
             <End Role="Direktor" EntitySet="Zaposlenis" />
@@ -1035,32 +1007,12 @@
             <PropertyRef Name="UgovorBrojUgovora" />
           </Key>
           <Property Name="Nacin_Placanja" Type="String" Nullable="false" />
-          <NavigationProperty Name="Ugovor" Relationship="ModelDB.PraviUgovorUgovor" FromRole="PraviUgovor" ToRole="Ugovor" />
           <Property Name="UgovorBrojUgovora" Type="Int32" Nullable="false" />
           <NavigationProperty Name="Direktor" Relationship="ModelDB.PraviUgovorDirektor" FromRole="PraviUgovor" ToRole="Direktor" />
           <Property Name="DirektorJMBG_R" Type="String" Nullable="false" />
           <NavigationProperty Name="Roditelj" Relationship="ModelDB.PraviUgovorRoditelj" FromRole="PraviUgovor" ToRole="Roditelj" />
           <Property Name="RoditeljJMBG_Rod" Type="String" Nullable="true" />
         </EntityType>
-        <EntityType Name="Ugovor">
-          <Key>
-            <PropertyRef Name="BrojUgovora" />
-          </Key>
-          <Property Name="BrojUgovora" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <NavigationProperty Name="PraviUgovors" Relationship="ModelDB.PraviUgovorUgovor" FromRole="Ugovor" ToRole="PraviUgovor" />
-        </EntityType>
-        <Association Name="PraviUgovorUgovor">
-          <End Type="ModelDB.PraviUgovor" Role="PraviUgovor" Multiplicity="*" />
-          <End Type="ModelDB.Ugovor" Role="Ugovor" Multiplicity="1" />
-          <ReferentialConstraint>
-            <Principal Role="Ugovor">
-              <PropertyRef Name="BrojUgovora" />
-            </Principal>
-            <Dependent Role="PraviUgovor">
-              <PropertyRef Name="UgovorBrojUgovora" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="PraviUgovorDirektor">
           <End Type="ModelDB.PraviUgovor" Role="PraviUgovor" Multiplicity="*" />
           <End Type="ModelDB.Direktor" Role="Direktor" Multiplicity="1" />
@@ -1237,13 +1189,6 @@
           <ScalarProperty Name="UgovorBrojUgovora" ColumnName="UgovorBrojUgovora" />
           <ScalarProperty Name="Nacin_Placanja" ColumnName="Nacin_Placanja" />
           <ScalarProperty Name="RoditeljJMBG_Rod" ColumnName="RoditeljJMBG_Rod" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="Ugovori">
-      <EntityTypeMapping TypeName="IsTypeOf(ModelDB.Ugovor)">
-        <MappingFragment StoreEntitySet="Ugovori">
-          <ScalarProperty Name="BrojUgovora" ColumnName="BrojUgovora" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

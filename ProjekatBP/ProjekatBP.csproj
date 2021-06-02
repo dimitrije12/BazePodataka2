@@ -112,9 +112,6 @@
     <Compile Include="Ucenik.cs">
       <DependentUpon>ModelDB.tt</DependentUpon>
     </Compile>
-    <Compile Include="Ugovor.cs">
-      <DependentUpon>ModelDB.tt</DependentUpon>
-    </Compile>
     <Compile Include="Vlasnik.cs">
       <DependentUpon>ModelDB.tt</DependentUpon>
     </Compile>

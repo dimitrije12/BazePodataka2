@@ -26,7 +26,7 @@ namespace PrivatnaSkolaApp.Views
 
        
         private ProfesorCRUD db;
-        
+        private string id = "";
         private BindingList<Zaposleni> zap;
         public BindableCollection<Predmet> predmeti;
         public BindableCollection<PrivatnaSkola> skole;
@@ -69,27 +69,66 @@ namespace PrivatnaSkolaApp.Views
         {
             try
             {
-
-                Profesor p = new Profesor()
+                if (id == "")
                 {
-                    JMBG_R = TextBoxJMBG.Text,
-                    Godine = GodineTB.Text,
-                    Ime_R = TextBoxName.Text,
-                    Prezime_R = TextBoxPrezime.Text,
-                    PrivatnaSkolaRegBroj = Int32.Parse(((PrivatnaSkola)ComboBoxSkola.SelectedItem).RegBroj.ToString()),
-                    PredmetImePredmet = ((Predmet)ComboBoxPredmeti.SelectedItem).ImePredmet,
-                    Uloga = "Prof"
-                    
-                };
+                    Profesor p = new Profesor()
+                    {
+                        JMBG_R = TextBoxJMBG.Text,
+                        Godine = GodineTB.Text,
+                        Ime_R = TextBoxName.Text,
+                        Prezime_R = TextBoxPrezime.Text,
+                        PrivatnaSkolaRegBroj = Int32.Parse(((PrivatnaSkola)ComboBoxSkola.SelectedItem).RegBroj.ToString()),
+                        PredmetImePredmet = ((Predmet)ComboBoxPredmeti.SelectedItem).ImePredmet,
+                        Uloga = "Prof"
 
-                
-                db.AddProfesor(p);
+                    };
+
+
+                    db.AddProfesor(p);
+                    UpdateData();
+                }
+                else
+                {
+                    Profesor p = ((Profesor)db.GetZaposleni(id));
+                    p.Ime_R = TextBoxName.Text;
+                    p.Prezime_R = TextBoxPrezime.Text;
+                    p.Godine = GodineTB.Text;
+                    p.Uloga = "Prof";
+                    p.PredmetImePredmet = ((Predmet)ComboBoxPredmeti.SelectedItem).ImePredmet;
+                    db.UpdateData();
+                }
                 UpdateData();
+                DeleteInput();
             }
             catch
             {
 
             }
+        }
+
+        private void DeleteInput()
+        {
+            TextBoxJMBG.Text = String.Empty;
+            TextBoxName.Text = String.Empty;
+            TextBoxPrezime.Text = String.Empty;
+            GodineTB.Text = String.Empty;
+            id = "";
+        }
+
+        private void EDIT_Click(object sender, RoutedEventArgs e)
+        {
+            Profesor r = ((FrameworkElement)sender).DataContext as Profesor;
+            if (r != null)
+            {
+                id = r.JMBG_R;
+                TextBoxJMBG.Text = r.JMBG_R;
+                TextBoxName.Text = r.Ime_R;
+                GodineTB.Text = r.Godine.ToString();
+                TextBoxPrezime.Text = r.Prezime_R;
+               
+
+            }
+
         }
     }
 }

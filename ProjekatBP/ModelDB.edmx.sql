@@ -2,13 +2,13 @@
 -- --------------------------------------------------
 -- Entity Designer DDL Script for SQL Server 2005, 2008, 2012 and Azure
 -- --------------------------------------------------
--- Date Created: 06/02/2021 16:13:52
+-- Date Created: 06/02/2021 17:35:30
 -- Generated from EDMX file: C:\Users\KORISNIK\Desktop\ProjekatBP\ProjekatBP\ModelDB.edmx
 -- --------------------------------------------------
 
 SET QUOTED_IDENTIFIER OFF;
 GO
-USE [ProjekatBP2baza];
+USE [BP2P];
 GO
 IF SCHEMA_ID(N'dbo') IS NULL EXECUTE(N'CREATE SCHEMA [dbo]');
 GO
@@ -67,9 +67,6 @@ IF OBJECT_ID(N'[dbo].[FK_DrziDirektor]', 'F') IS NOT NULL
 GO
 IF OBJECT_ID(N'[dbo].[FK_PrivatnaSkolaDrzi]', 'F') IS NOT NULL
     ALTER TABLE [dbo].[Drzis] DROP CONSTRAINT [FK_PrivatnaSkolaDrzi];
-GO
-IF OBJECT_ID(N'[dbo].[FK_PraviUgovorUgovor]', 'F') IS NOT NULL
-    ALTER TABLE [dbo].[PraviUgovors] DROP CONSTRAINT [FK_PraviUgovorUgovor];
 GO
 IF OBJECT_ID(N'[dbo].[FK_PraviUgovorDirektor]', 'F') IS NOT NULL
     ALTER TABLE [dbo].[PraviUgovors] DROP CONSTRAINT [FK_PraviUgovorDirektor];
@@ -135,9 +132,6 @@ IF OBJECT_ID(N'[dbo].[Drzis]', 'U') IS NOT NULL
 GO
 IF OBJECT_ID(N'[dbo].[PraviUgovors]', 'U') IS NOT NULL
     DROP TABLE [dbo].[PraviUgovors];
-GO
-IF OBJECT_ID(N'[dbo].[Ugovori]', 'U') IS NOT NULL
-    DROP TABLE [dbo].[Ugovori];
 GO
 IF OBJECT_ID(N'[dbo].[Zaposlenis_Profesor]', 'U') IS NOT NULL
     DROP TABLE [dbo].[Zaposlenis_Profesor];
@@ -270,12 +264,6 @@ CREATE TABLE [dbo].[PraviUgovors] (
 );
 GO
 
--- Creating table 'Ugovori'
-CREATE TABLE [dbo].[Ugovori] (
-    [BrojUgovora] int IDENTITY(1,1) NOT NULL
-);
-GO
-
 -- Creating table 'Zaposlenis_Profesor'
 CREATE TABLE [dbo].[Zaposlenis_Profesor] (
     [PredmetImePredmet] nvarchar(max)  NULL,
@@ -387,12 +375,6 @@ GO
 ALTER TABLE [dbo].[PraviUgovors]
 ADD CONSTRAINT [PK_PraviUgovors]
     PRIMARY KEY CLUSTERED ([DirektorJMBG_R], [UgovorBrojUgovora] ASC);
-GO
-
--- Creating primary key on [BrojUgovora] in table 'Ugovori'
-ALTER TABLE [dbo].[Ugovori]
-ADD CONSTRAINT [PK_Ugovori]
-    PRIMARY KEY CLUSTERED ([BrojUgovora] ASC);
 GO
 
 -- Creating primary key on [JMBG_R] in table 'Zaposlenis_Profesor'
@@ -646,21 +628,6 @@ GO
 CREATE INDEX [IX_FK_PrivatnaSkolaDrzi]
 ON [dbo].[Drzis]
     ([PrivatnaSkolaRegBroj]);
-GO
-
--- Creating foreign key on [UgovorBrojUgovora] in table 'PraviUgovors'
-ALTER TABLE [dbo].[PraviUgovors]
-ADD CONSTRAINT [FK_PraviUgovorUgovor]
-    FOREIGN KEY ([UgovorBrojUgovora])
-    REFERENCES [dbo].[Ugovori]
-        ([BrojUgovora])
-    ON DELETE NO ACTION ON UPDATE NO ACTION;
-GO
-
--- Creating non-clustered index for FOREIGN KEY 'FK_PraviUgovorUgovor'
-CREATE INDEX [IX_FK_PraviUgovorUgovor]
-ON [dbo].[PraviUgovors]
-    ([UgovorBrojUgovora]);
 GO
 
 -- Creating foreign key on [DirektorJMBG_R] in table 'PraviUgovors'

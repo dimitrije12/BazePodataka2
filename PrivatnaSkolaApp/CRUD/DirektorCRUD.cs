@@ -15,6 +15,14 @@ namespace PrivatnaSkolaApp.CRUD
         {
             db = new ModelDBContext();
         }
+        public void UpdateData()
+        {
+            db.SaveChanges();
+        }
+        public Zaposleni GetZaposleni(string jmbg)
+        {
+            return db.Zaposlenis.Find(jmbg);
+        }
 
         public void AddDirektor(Direktor s)
         {
@@ -40,7 +48,12 @@ namespace PrivatnaSkolaApp.CRUD
                     cisc.DeleteCisti(cuva);
                 }
                 */
-
+                List<PraviUgovor> pu = db.PraviUgovors.Where(x => x.DirektorJMBG_R == z.JMBG_R).ToList();
+                PotpisiUgovorCRUD c = new PotpisiUgovorCRUD();
+                foreach(PraviUgovor p in pu)
+                {
+                    c.deleteUgovor(p);
+                }
                 db.Zaposlenis.Remove(db.Zaposlenis.Find(z.JMBG_R));
                 db.SaveChanges();
                 return true;

@@ -14,6 +14,14 @@ namespace PrivatnaSkolaApp.CRUD
         {
             db = new ModelDBContext();
         }
+        public void UpdateData()
+        {
+            db.SaveChanges();
+        }
+        public Zaposleni GetZaposleni(string jmbg)
+        {
+            return db.Zaposlenis.Find(jmbg);
+        }
 
         public void AddSpremacica(Spremacica s)
         {

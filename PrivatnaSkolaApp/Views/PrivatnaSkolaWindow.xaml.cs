@@ -26,7 +26,7 @@ namespace PrivatnaSkolaApp.Views
     {
         public BindingList<PrivatnaSkola> Skolee { get; set; }
         private PrivatnaSkolaCRUD db;
-        
+        private int editNum = -1;
         public BindableCollection<Grad> Gradovi { get; set; }
 
         public PrivatnaSkolaWindow()
@@ -44,22 +44,41 @@ namespace PrivatnaSkolaApp.Views
         {
             try
             {
-                PrivatnaSkola ps = new PrivatnaSkola
+                if (editNum == -1)
                 {
-                    ImeSkole = TextBoxIme.Text,
-                    RegBroj = Int32.Parse(TextBoxRegBr.Text),
-                    BrojTelefon = TextBoxBrTel.Text,
-                    GradPostanskiBroj = Int32.Parse(((Grad)GradoviCB.SelectedItem).PostanskiBroj.ToString())
-                };
-                db.AddPrivSk(ps);
-                Skolee = new BindingList<PrivatnaSkola>(db.GetPrivatneSkole().ToList());
-                PrivSkList.ItemsSource = Skolee;
+                    PrivatnaSkola ps = new PrivatnaSkola
+                    {
+                        ImeSkole = TextBoxIme.Text,
+                        RegBroj = Int32.Parse(TextBoxRegBr.Text),
+                        BrojTelefon = TextBoxBrTel.Text,
+                        GradPostanskiBroj = Int32.Parse(((Grad)GradoviCB.SelectedItem).PostanskiBroj.ToString())
+                    };
+                    db.AddPrivSk(ps);
+                    Skolee = new BindingList<PrivatnaSkola>(db.GetPrivatneSkole().ToList());
+                    PrivSkList.ItemsSource = Skolee;
+                }
+                else
+                {
+                    PrivatnaSkola ps = db.GetSkola(editNum);
+                    ps.ImeSkole = TextBoxIme.Text;
+                    ps.BrojTelefon = TextBoxBrTel.Text;
+                    db.UpdateSkola();
+                    Skolee = new BindingList<PrivatnaSkola>(db.GetPrivatneSkole().ToList());
+                    PrivSkList.ItemsSource = Skolee;
+                }
+                ClearInput();
      
             }
             catch
             {
 
             }
+        }
+        private void ClearInput()
+        {
+            editNum = -1;
+            TextBoxIme.Text = String.Empty;
+            TextBoxBrTel.Text = String.Empty;
         }
 
         private void DEL_Click(object sender, RoutedEventArgs e)
@@ -71,6 +90,21 @@ namespace PrivatnaSkolaApp.Views
                 Skolee = new BindingList<PrivatnaSkola>(db.GetPrivatneSkole().ToList());
                 PrivSkList.ItemsSource = Skolee;
                 GradoviCB.ItemsSource = Gradovi;
+            }
+        }
+
+        private void EDIT_Click(object sender, RoutedEventArgs e)
+        {
+            PrivatnaSkola r = ((FrameworkElement)sender).DataContext as PrivatnaSkola;
+            if (r != null)
+            {
+                TextBoxIme.Text = r.ImeSkole;
+                TextBoxBrTel.Text = r.BrojTelefon;
+                TextBoxRegBr.Text = r.RegBroj.ToString();
+
+                this.editNum = r.RegBroj;
+
+               
             }
         }
     }

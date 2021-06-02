@@ -29,7 +29,14 @@ namespace PrivatnaSkolaApp.CRUD
                 return false;
             }
         }
-
+        public Ucenik GetUcenikByKey(String JMBG)
+        {
+            return db.Ucenici.Find(JMBG);
+        }
+        public void updateUcenik()
+        {
+            db.SaveChanges();
+        }
         public bool DeleteUcenik(Ucenik u)
         {
             try

@@ -11,8 +11,16 @@
             <DataGrid.Columns>
                 <DataGridTextColumn x:Name="ImeDirektor" Header="Ime cistacice" Binding="{Binding Ime_R}"/>
                 <DataGridTextColumn x:Name="PrezimeDirektor" Header="Prezime cistacice" Binding="{Binding Prezime_R}"/>
+                <DataGridTextColumn x:Name="Godine" Header="Godine" Binding="{Binding Godine}"/>
                 <DataGridTextColumn x:Name="JMBGDirektor" Header="JMBG cistacie" Binding="{Binding JMBG_R}"/>
                 <DataGridTextColumn x:Name="SkolaP" Header="Skola" Binding="{Binding PrivatnaSkolaRegBroj}" />
+                <DataGridTemplateColumn>
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <Button x:Name="EDIT" Content="Edit" Click="EDIT_Click"/>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
                 <DataGridTemplateColumn>
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
@@ -29,7 +37,7 @@
         <TextBox x:Name="TextBoxPrezime" HorizontalAlignment="Left" Height="23" Margin="63,41,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="102"/>
         <Label Content="JMBG" HorizontalAlignment="Left" Margin="10,72,0,0" VerticalAlignment="Top"/>
         <TextBox x:Name="TextBoxJMBG" HorizontalAlignment="Left" Height="23" Margin="63,72,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="102"/>
-        <Button Content="Sacuvaj Spremacicu" HorizontalAlignment="Left" Margin="602,113,0,0" VerticalAlignment="Top" Width="109" Click="Button_Click"/>
+        <Button Content="Sacuvaj Direktora" HorizontalAlignment="Left" Margin="602,113,0,0" VerticalAlignment="Top" Width="109" Click="Button_Click"/>
         <Label Content="Skola" HorizontalAlignment="Left" Margin="222,10,0,0" VerticalAlignment="Top"/>
         <ComboBox x:Name="ComboBoxSkola" HorizontalAlignment="Left" ItemsSource="{Binding Skole}" SelectedValuePath="RegBroj" DisplayMemberPath="ImeSkole" Margin="280,13,0,0" VerticalAlignment="Top" Width="120"/>
         <Label Content="Godine" HorizontalAlignment="Left" Margin="10,103,0,0" VerticalAlignment="Top" Width="53"/>

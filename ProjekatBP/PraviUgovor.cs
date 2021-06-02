@@ -19,7 +19,6 @@ namespace ProjekatBP
         public string DirektorJMBG_R { get; set; }
         public string RoditeljJMBG_Rod { get; set; }
     
-        public virtual Ugovor Ugovor { get; set; }
         public virtual Direktor Direktor { get; set; }
         public virtual Roditelj Roditelj { get; set; }
     }

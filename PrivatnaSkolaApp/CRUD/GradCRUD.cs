@@ -60,9 +60,21 @@ namespace PrivatnaSkolaApp.CRUD
             return dataBase.Gradovi;
         }
 
-        public void UpdateGrad(Grad grad)
+        public void UpdateGrad(Grad g)
         {
-            throw new NotImplementedException();
+            try
+            {
+                dataBase.SaveChanges();
+            }
+            catch
+            {
+
+            }
         }
+        public Grad GetGradByPB(int PB)
+        {
+            return dataBase.Gradovi.Find(PB);
+        }
+        
     }
 }

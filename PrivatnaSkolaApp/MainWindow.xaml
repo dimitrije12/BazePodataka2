@@ -23,6 +23,7 @@
         <Button Content="Cuva" HorizontalAlignment="Left" Margin="433,381,0,0" VerticalAlignment="Top" Width="133" Height="29" Click="Button_Click_11"/>
         <Button Content="Direktori" HorizontalAlignment="Left" Margin="668,341,0,0" VerticalAlignment="Top" Width="97" Height="35" Click="Button_Click_12"/>
         <Button Content="Drzi" HorizontalAlignment="Left" Margin="668,381,0,0" VerticalAlignment="Top" Width="97" Height="29" Click="Button_Click_13"/>
+        <Button Content="Pravi Ugovor" HorizontalAlignment="Left" Margin="668,268,0,0" VerticalAlignment="Top" Width="87" Height="35" Click="Button_Click_14"/>
 
     </Grid>
 </Window>

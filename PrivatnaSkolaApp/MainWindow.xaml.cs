@@ -126,5 +126,11 @@ namespace PrivatnaSkolaApp
             Views.DrziWindow dw = new Views.DrziWindow();
             dw.Show();
         }
+
+        private void Button_Click_14(object sender, RoutedEventArgs e)
+        {
+            Views.PotpisiUgovor pu = new Views.PotpisiUgovor();
+            pu.Show();
+        }
     }
 }

@@ -24,7 +24,8 @@ namespace PrivatnaSkolaApp.Views.RoditeljViews
     public partial class RoditeljWindow : Window
     {
         public BindingList<Roditelj> Roditeljii { get; set; }
-        private IRoditeljCrud db;
+        private String editString = "";
+        private RoditeljCrud db;
         public RoditeljWindow()
         {
             InitializeComponent();
@@ -50,22 +51,55 @@ namespace PrivatnaSkolaApp.Views.RoditeljViews
         {
             try
             {
-                Roditelj r = new Roditelj
+                if (editString == "")
                 {
-                    Ime_Rod = ImeR.Text,
-                    Prezime_Rod = PrezimeR.Text,
-                    JMBG_Rod = JMBGR.Text
+                    Roditelj r = new Roditelj
+                    {
+                        Ime_Rod = ImeR.Text,
+                        Prezime_Rod = PrezimeR.Text,
+                        JMBG_Rod = JMBGR.Text
 
-                };
-                db.AddRoditelj(r);
+                    };
+                    db.AddRoditelj(r);
+                    Roditeljii = new BindingList<Roditelj>(db.GetRoditeljList().ToList());
+                    RoditeljList.ItemsSource = Roditeljii;
+                }
+                else
+                {
+                    Roditelj r = db.GetRoditelj(editString);
+                    r.Ime_Rod = ImeR.Text;
+                    r.Prezime_Rod = PrezimeR.Text;
+                   
+                    db.UpdateRoditelj();
+                }
                 Roditeljii = new BindingList<Roditelj>(db.GetRoditeljList().ToList());
                 RoditeljList.ItemsSource = Roditeljii;
-
             }
             catch
             {
 
             }
+            
+        }
+        private void ClearForm()
+        {
+            ImeR.Text = String.Empty;
+            PrezimeR.Text = String.Empty;
+            JMBGR.Text = String.Empty;
+            this.editString = "";
+        }
+
+        private void EDIT_Click(object sender, RoutedEventArgs e)
+        {
+            Roditelj r = ((FrameworkElement)sender).DataContext as Roditelj;
+            if (r != null)
+            {
+                ImeR.Text = r.Ime_Rod;
+                PrezimeR.Text = r.Prezime_Rod;
+                JMBGR.Text = r.JMBG_Rod;
+                this.editString = r.JMBG_Rod;
+            }
+
             
         }
     }

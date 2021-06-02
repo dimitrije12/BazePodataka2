@@ -25,7 +25,7 @@ namespace PrivatnaSkolaApp.Views
     {
         public BindingList<Grad> Gradovi { get; set; }
         private IGradCrud db;
-   
+        private int editID;
 
         public GradoviWindow()
         {
@@ -39,14 +39,27 @@ namespace PrivatnaSkolaApp.Views
         {
             try
             {
-                Grad g = new Grad()
+                Grad g;
+                if (this.editID == -1)
                 {
-                    ImeGrada = IMEG.Text,
-                    PostanskiBroj = Int32.Parse(PB.Text)
-                };
-                db.AddGrad(g);
-                Gradovi = new BindingList<Grad>(db.GetGradList().ToList());
-                GradoviList.ItemsSource = Gradovi;
+                    g = new Grad()
+                    {
+                        ImeGrada = IMEG.Text,
+                        PostanskiBroj = Int32.Parse(PB.Text)
+                    };
+                    db.AddGrad(g);
+                    Gradovi = new BindingList<Grad>(db.GetGradList().ToList());
+                    GradoviList.ItemsSource = Gradovi;
+                }
+                else
+                {
+                    g = db.GetGrad(editID);
+                    g.ImeGrada = IMEG.Text;
+                    db.UpdateGrad(g);
+                    Gradovi = new BindingList<Grad>(db.GetGradList().ToList());
+                    GradoviList.ItemsSource = Gradovi;
+                }
+                ClearForm();
             }
             catch
             {
@@ -54,6 +67,24 @@ namespace PrivatnaSkolaApp.Views
                 //ERR.BorderBrush=SolidColorBrush.ColorProperty.
                 
             }
+        }
+        private void ClearForm()
+        {
+            IMEG.Text = String.Empty;
+            PB.Text = String.Empty;
+            this.editID = -1;
+        }
+
+        private void EDIT_Click(object sender, RoutedEventArgs e)
+        {
+            Grad g = ((FrameworkElement)sender).DataContext as Grad;
+            if (g != null)
+            {
+                IMEG.Text = g.ImeGrada.ToString();
+                PB.Text = g.PostanskiBroj.ToString();
+                this.editID = g.PostanskiBroj;
+            }
+
         }
 
         private void DEL_Click(object sender, RoutedEventArgs e)
@@ -64,6 +95,7 @@ namespace PrivatnaSkolaApp.Views
                 db.DeleteGrad(g);
                 Gradovi = new BindingList<Grad>(db.GetGradList().ToList());
                 GradoviList.ItemsSource = Gradovi;
+                
             }
         }
     }

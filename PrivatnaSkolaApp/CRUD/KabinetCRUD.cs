@@ -15,7 +15,14 @@ namespace PrivatnaSkolaApp.CRUD
         {
             db = new ModelDBContext();
         }
-
+        public void UpdateKabinet()
+        {
+            db.SaveChanges();
+        }
+        public Kabinet GetKabinet(int k)
+        {
+            return db.Kabineti.Find(k);
+        }
         public bool AddNewKabinet(Kabinet k)
         {
             try

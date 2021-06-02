@@ -45,6 +45,12 @@ namespace PrivatnaSkolaApp.CRUD
             }
         }
 
+        public void UpdateRoditelj()
+        {
+            db.SaveChanges();
+        }
+
+
         public Roditelj GetRoditelj(string JMBG)
         {
             return db.Roditelji.Find(JMBG) as Roditelj;

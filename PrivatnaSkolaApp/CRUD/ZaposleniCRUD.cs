@@ -52,6 +52,12 @@ namespace PrivatnaSkolaApp.CRUD
                 {
                     dc.DeleteDrzi(dd);
                 }
+                List<PraviUgovor> pu = db.PraviUgovors.Where(x => x.DirektorJMBG_R == z.JMBG_R).ToList();
+                PotpisiUgovorCRUD c = new PotpisiUgovorCRUD();
+                foreach (PraviUgovor p in pu)
+                {
+                    c.deleteUgovor(p);
+                }
 
                 db.Zaposlenis.Remove(db.Zaposlenis.Find(z.JMBG_R));
                 db.SaveChanges();

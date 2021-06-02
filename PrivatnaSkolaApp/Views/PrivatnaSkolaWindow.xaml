@@ -13,7 +13,13 @@
                 <DataGridTextColumn x:Name="ImeSk" Header="Ime skole" Binding="{Binding ImeSkole}"/>
                 <DataGridTextColumn x:Name="BrojTel" Header="Broj Telefona" Binding="{Binding BrojTelefon}"/>
                 <DataGridTextColumn x:Name="Grad" Header="Grad" Binding="{Binding GradPostanskiBroj}"/>
-
+                <DataGridTemplateColumn>
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <Button x:Name="EDIT" Content="Edit" Click="EDIT_Click"/>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
                 <DataGridTemplateColumn>
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>

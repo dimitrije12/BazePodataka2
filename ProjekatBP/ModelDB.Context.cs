@@ -39,6 +39,5 @@ namespace ProjekatBP
         public virtual DbSet<Vlasnik> Vlasnici { get; set; }
         public virtual DbSet<Drzi> Drzis { get; set; }
         public virtual DbSet<PraviUgovor> PraviUgovors { get; set; }
-        public virtual DbSet<Ugovor> Ugovori { get; set; }
     }
 }

@@ -14,6 +14,14 @@ namespace PrivatnaSkolaApp.CRUD
         {
             db = new ModelDBContext();
         }
+        public void UpdateVlasnik()
+        {
+            db.SaveChanges();
+        }
+        public Vlasnik GetVlasnik(string ID)
+        {
+            return db.Vlasnici.Find(ID);
+        }
 
         public void AddVlasnik(Vlasnik v)
         {
