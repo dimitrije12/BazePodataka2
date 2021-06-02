@@ -15,6 +15,12 @@
         <Button Content="Pohadja" HorizontalAlignment="Left" Margin="323,122,0,0" VerticalAlignment="Top" Width="66" Click="Button_Click_3"/>
         <Button Content="Zivi" HorizontalAlignment="Left" Margin="394,122,0,0" VerticalAlignment="Top" Width="61" Click="Button_Click_4"/>
         <Button Content="Kabineti" HorizontalAlignment="Left" Margin="10,222,0,0" VerticalAlignment="Top" Width="142" Height="56" Click="Button_Click_5"/>
+        <Button Content="Predmeti" HorizontalAlignment="Left" Margin="323,222,0,0" VerticalAlignment="Top" Width="132" Height="56" Click="Button_Click_6"/>
+        <Button Content="Profesori" HorizontalAlignment="Left" Margin="10,341,0,0" VerticalAlignment="Top" Width="142" Height="54" Click="Button_Click_7"/>
+        <Button Content="Spremacice" HorizontalAlignment="Left" Margin="323,341,0,0" VerticalAlignment="Top" Width="132" Height="35" Click="Button_Click_8"/>
+        <Button Content="Cisti" HorizontalAlignment="Left" Margin="323,381,0,0" VerticalAlignment="Top" Width="132" Height="29" Click="Button_Click_9"/>
+        <Button Content="Obezbedjenje" HorizontalAlignment="Left" Margin="500,341,0,0" VerticalAlignment="Top" Width="133" Height="35" Click="Button_Click_10"/>
+        <Button Content="Cuva" HorizontalAlignment="Left" Margin="500,381,0,0" VerticalAlignment="Top" Width="133" Height="29" Click="Button_Click_11"/>
 
     </Grid>
 </Window>

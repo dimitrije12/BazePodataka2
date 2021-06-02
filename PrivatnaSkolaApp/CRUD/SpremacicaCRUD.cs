@@ -7,20 +7,27 @@ using System.Threading.Tasks;
 
 namespace PrivatnaSkolaApp.CRUD
 {
-    class ProfesorCRUD
+    class SpremacicaCRUD
     {
         private ModelDBContext db;
-        public ProfesorCRUD()
+        public SpremacicaCRUD()
         {
             db = new ModelDBContext();
         }
 
-        public void AddProfesor(Profesor p)
+        public void AddSpremacica(Spremacica s)
         {
-            db.Zaposlenis.Add(p);
-            db.SaveChanges();
+            try
+            {
+                db.Zaposlenis.Add(s);
+                db.SaveChanges();
+            }
+            catch
+            {
+
+            }
         }
-        public bool DeleteProfesor(Profesor z)
+        public bool DeleteSpremacica(Spremacica z)
         {
             try
             {
@@ -52,7 +59,5 @@ namespace PrivatnaSkolaApp.CRUD
         }
 
     }
-
-
 }
 

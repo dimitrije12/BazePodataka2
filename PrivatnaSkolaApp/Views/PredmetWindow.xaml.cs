@@ -1,5 +1,9 @@
-﻿using System;
+﻿using Caliburn.Micro;
+using PrivatnaSkolaApp.CRUD;
+using ProjekatBP;
+using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -19,14 +23,53 @@ namespace PrivatnaSkolaApp.Views
     /// </summary>
     public partial class PredmetWindow : Window
     {
+        PredmetCRUD db;
+        public BindingList<Predmet> predmeti;
+        public BindableCollection<Kabinet> kabineti;
         public PredmetWindow()
         {
+            db = new PredmetCRUD();
             InitializeComponent();
+            updateData();
+            
+        }
+
+        private void updateData()
+        {
+            predmeti = new BindingList<Predmet>(db.GetPredmeti().ToList());
+            kabineti = new BindableCollection<Kabinet>(db.GetKabineti().ToList());
+            PredmetiList.ItemsSource = predmeti;
+            ComboBoxKabinet.ItemsSource = kabineti;
         }
 
         private void DEL_Click(object sender, RoutedEventArgs e)
         {
+            Predmet r = ((FrameworkElement)sender).DataContext as Predmet;
+            if (r != null)
+            {
+                db.DeletePredmet(r);
+                updateData();
+            }
 
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                Predmet p = new Predmet
+                {
+                    ImePredmet = TextBoxImePredmeta.Text,
+                    BrojCasova = Int32.Parse(TextBoxBrojCasova.Text),
+                    KabinetBroj = Int32.Parse(((Kabinet)ComboBoxKabinet.SelectedItem).Broj.ToString())
+                };
+                db.AddPredmet(p);
+                updateData();
+            }
+            catch
+            {
+
+            }
         }
     }
 }

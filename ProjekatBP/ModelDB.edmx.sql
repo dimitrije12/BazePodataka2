@@ -2,13 +2,13 @@
 -- --------------------------------------------------
 -- Entity Designer DDL Script for SQL Server 2005, 2008, 2012 and Azure
 -- --------------------------------------------------
--- Date Created: 05/31/2021 20:59:51
+-- Date Created: 06/02/2021 03:19:09
 -- Generated from EDMX file: C:\Users\KORISNIK\Desktop\ProjekatBP\ProjekatBP\ModelDB.edmx
 -- --------------------------------------------------
 
 SET QUOTED_IDENTIFIER OFF;
 GO
-USE [ProjekatBP2];
+USE [BP2Base];
 GO
 IF SCHEMA_ID(N'dbo') IS NULL EXECUTE(N'CREATE SCHEMA [dbo]');
 GO
@@ -17,11 +17,140 @@ GO
 -- Dropping existing FOREIGN KEY constraints
 -- --------------------------------------------------
 
+IF OBJECT_ID(N'[dbo].[FK_GradZivi]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[Zivis] DROP CONSTRAINT [FK_GradZivi];
+GO
+IF OBJECT_ID(N'[dbo].[FK_UcenikZivi]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[Zivis] DROP CONSTRAINT [FK_UcenikZivi];
+GO
+IF OBJECT_ID(N'[dbo].[FK_RoditeljUcenik]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[Ucenici] DROP CONSTRAINT [FK_RoditeljUcenik];
+GO
+IF OBJECT_ID(N'[dbo].[FK_GradPrivatnaSkola]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[PrivatneSkole] DROP CONSTRAINT [FK_GradPrivatnaSkola];
+GO
+IF OBJECT_ID(N'[dbo].[FK_PohadjaUcenik]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[Pohadjas] DROP CONSTRAINT [FK_PohadjaUcenik];
+GO
+IF OBJECT_ID(N'[dbo].[FK_PohadjaPrivatnaSkola]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[Pohadjas] DROP CONSTRAINT [FK_PohadjaPrivatnaSkola];
+GO
+IF OBJECT_ID(N'[dbo].[FK_ZaposleniPrivatnaSkola]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[Zaposlenis] DROP CONSTRAINT [FK_ZaposleniPrivatnaSkola];
+GO
+IF OBJECT_ID(N'[dbo].[FK_PredmetProfesor]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[Zaposlenis_Profesor] DROP CONSTRAINT [FK_PredmetProfesor];
+GO
+IF OBJECT_ID(N'[dbo].[FK_KabinetPredmet]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[Predmeti] DROP CONSTRAINT [FK_KabinetPredmet];
+GO
+IF OBJECT_ID(N'[dbo].[FK_PrivatnaSkolaKabinet]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[Kabineti] DROP CONSTRAINT [FK_PrivatnaSkolaKabinet];
+GO
+IF OBJECT_ID(N'[dbo].[FK_SpremacicaCisti]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[Cistis] DROP CONSTRAINT [FK_SpremacicaCisti];
+GO
+IF OBJECT_ID(N'[dbo].[FK_CistiKabinet]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[Cistis] DROP CONSTRAINT [FK_CistiKabinet];
+GO
+IF OBJECT_ID(N'[dbo].[FK_CuvaObezbedjenje]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[Cuvas] DROP CONSTRAINT [FK_CuvaObezbedjenje];
+GO
+IF OBJECT_ID(N'[dbo].[FK_CuvaKabinet]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[Cuvas] DROP CONSTRAINT [FK_CuvaKabinet];
+GO
+IF OBJECT_ID(N'[dbo].[FK_DrziVlasnik]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[Drzis] DROP CONSTRAINT [FK_DrziVlasnik];
+GO
+IF OBJECT_ID(N'[dbo].[FK_DrziDirektor]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[Drzis] DROP CONSTRAINT [FK_DrziDirektor];
+GO
+IF OBJECT_ID(N'[dbo].[FK_PrivatnaSkolaDrzi]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[Drzis] DROP CONSTRAINT [FK_PrivatnaSkolaDrzi];
+GO
+IF OBJECT_ID(N'[dbo].[FK_PraviUgovorUgovor]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[PraviUgovors] DROP CONSTRAINT [FK_PraviUgovorUgovor];
+GO
+IF OBJECT_ID(N'[dbo].[FK_PraviUgovorDirektor]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[PraviUgovors] DROP CONSTRAINT [FK_PraviUgovorDirektor];
+GO
+IF OBJECT_ID(N'[dbo].[FK_PraviUgovorRoditelj]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[PraviUgovors] DROP CONSTRAINT [FK_PraviUgovorRoditelj];
+GO
+IF OBJECT_ID(N'[dbo].[FK_Profesor_inherits_Zaposleni]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[Zaposlenis_Profesor] DROP CONSTRAINT [FK_Profesor_inherits_Zaposleni];
+GO
+IF OBJECT_ID(N'[dbo].[FK_Spremacica_inherits_Zaposleni]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[Zaposlenis_Spremacica] DROP CONSTRAINT [FK_Spremacica_inherits_Zaposleni];
+GO
+IF OBJECT_ID(N'[dbo].[FK_Obezbedjenje_inherits_Zaposleni]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[Zaposlenis_Obezbedjenje] DROP CONSTRAINT [FK_Obezbedjenje_inherits_Zaposleni];
+GO
+IF OBJECT_ID(N'[dbo].[FK_Direktor_inherits_Zaposleni]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[Zaposlenis_Direktor] DROP CONSTRAINT [FK_Direktor_inherits_Zaposleni];
+GO
 
 -- --------------------------------------------------
 -- Dropping existing tables
 -- --------------------------------------------------
 
+IF OBJECT_ID(N'[dbo].[Gradovi]', 'U') IS NOT NULL
+    DROP TABLE [dbo].[Gradovi];
+GO
+IF OBJECT_ID(N'[dbo].[Ucenici]', 'U') IS NOT NULL
+    DROP TABLE [dbo].[Ucenici];
+GO
+IF OBJECT_ID(N'[dbo].[Zivis]', 'U') IS NOT NULL
+    DROP TABLE [dbo].[Zivis];
+GO
+IF OBJECT_ID(N'[dbo].[Roditelji]', 'U') IS NOT NULL
+    DROP TABLE [dbo].[Roditelji];
+GO
+IF OBJECT_ID(N'[dbo].[PrivatneSkole]', 'U') IS NOT NULL
+    DROP TABLE [dbo].[PrivatneSkole];
+GO
+IF OBJECT_ID(N'[dbo].[Pohadjas]', 'U') IS NOT NULL
+    DROP TABLE [dbo].[Pohadjas];
+GO
+IF OBJECT_ID(N'[dbo].[Zaposlenis]', 'U') IS NOT NULL
+    DROP TABLE [dbo].[Zaposlenis];
+GO
+IF OBJECT_ID(N'[dbo].[Predmeti]', 'U') IS NOT NULL
+    DROP TABLE [dbo].[Predmeti];
+GO
+IF OBJECT_ID(N'[dbo].[Kabineti]', 'U') IS NOT NULL
+    DROP TABLE [dbo].[Kabineti];
+GO
+IF OBJECT_ID(N'[dbo].[Cistis]', 'U') IS NOT NULL
+    DROP TABLE [dbo].[Cistis];
+GO
+IF OBJECT_ID(N'[dbo].[Cuvas]', 'U') IS NOT NULL
+    DROP TABLE [dbo].[Cuvas];
+GO
+IF OBJECT_ID(N'[dbo].[Vlasnici]', 'U') IS NOT NULL
+    DROP TABLE [dbo].[Vlasnici];
+GO
+IF OBJECT_ID(N'[dbo].[Drzis]', 'U') IS NOT NULL
+    DROP TABLE [dbo].[Drzis];
+GO
+IF OBJECT_ID(N'[dbo].[PraviUgovors]', 'U') IS NOT NULL
+    DROP TABLE [dbo].[PraviUgovors];
+GO
+IF OBJECT_ID(N'[dbo].[Ugovori]', 'U') IS NOT NULL
+    DROP TABLE [dbo].[Ugovori];
+GO
+IF OBJECT_ID(N'[dbo].[Zaposlenis_Profesor]', 'U') IS NOT NULL
+    DROP TABLE [dbo].[Zaposlenis_Profesor];
+GO
+IF OBJECT_ID(N'[dbo].[Zaposlenis_Spremacica]', 'U') IS NOT NULL
+    DROP TABLE [dbo].[Zaposlenis_Spremacica];
+GO
+IF OBJECT_ID(N'[dbo].[Zaposlenis_Obezbedjenje]', 'U') IS NOT NULL
+    DROP TABLE [dbo].[Zaposlenis_Obezbedjenje];
+GO
+IF OBJECT_ID(N'[dbo].[Zaposlenis_Direktor]', 'U') IS NOT NULL
+    DROP TABLE [dbo].[Zaposlenis_Direktor];
+GO
 
 -- --------------------------------------------------
 -- Creating all tables
@@ -81,7 +210,8 @@ CREATE TABLE [dbo].[Zaposlenis] (
     [Godine] nvarchar(max)  NOT NULL,
     [Ime_R] nvarchar(max)  NOT NULL,
     [Prezime_R] nvarchar(max)  NOT NULL,
-    [PrivatnaSkolaRegBroj] int  NOT NULL
+    [PrivatnaSkolaRegBroj] int  NOT NULL,
+    [Uloga] nvarchar(max)  NOT NULL
 );
 GO
 

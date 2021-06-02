@@ -19,6 +19,7 @@ namespace ProjekatBP
         public string Ime_R { get; set; }
         public string Prezime_R { get; set; }
         public int PrivatnaSkolaRegBroj { get; set; }
+        public string Uloga { get; set; }
     
         public virtual PrivatnaSkola PrivatnaSkola { get; set; }
     }

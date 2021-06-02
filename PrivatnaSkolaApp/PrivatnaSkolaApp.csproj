@@ -70,22 +70,36 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="CRUD\CistiCRUD.cs" />
+    <Compile Include="CRUD\CuvaCRUD.cs" />
     <Compile Include="CRUD\GradCRUD.cs" />
     <Compile Include="CRUD\KabinetCRUD.cs" />
+    <Compile Include="CRUD\ObezbedjenjCRUD.cs" />
     <Compile Include="CRUD\PohadjaCRUD.cs" />
     <Compile Include="CRUD\PredmetCRUD.cs" />
     <Compile Include="CRUD\PrivatnaSkolaCRUD.cs" />
     <Compile Include="CRUD\ProfesorCRUD.cs" />
     <Compile Include="CRUD\RoditeljCrud.cs" />
+    <Compile Include="CRUD\SpremacicaCRUD.cs" />
     <Compile Include="CRUD\UcenikCRUD.cs" />
+    <Compile Include="CRUD\ZaposleniCRUD.cs" />
     <Compile Include="CRUD\ZiviCRUD.cs" />
     <Compile Include="Interfaces\IGradCrud.cs" />
     <Compile Include="Interfaces\IRoditeljCrud.cs" />
+    <Compile Include="Views\CistiWindow.xaml.cs">
+      <DependentUpon>CistiWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\CuvaWindow.xaml.cs">
+      <DependentUpon>CuvaWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\GradViews\GradoviWindow.xaml.cs">
       <DependentUpon>GradoviWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\KabinetWindow.xaml.cs">
       <DependentUpon>KabinetWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\ObezbedjenjeView.xaml.cs">
+      <DependentUpon>ObezbedjenjeView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\PohadjaView.xaml.cs">
       <DependentUpon>PohadjaView.xaml</DependentUpon>
@@ -96,8 +110,14 @@
     <Compile Include="Views\PrivatnaSkolaWindow.xaml.cs">
       <DependentUpon>PrivatnaSkolaWindow.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Views\ProfesorWindow.xaml.cs">
+      <DependentUpon>ProfesorWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\RoditeljViews\RoditeljWindow.xaml.cs">
       <DependentUpon>RoditeljWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\SpremacicWindow.xaml.cs">
+      <DependentUpon>SpremacicWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\UcenikWindow.xaml.cs">
       <DependentUpon>UcenikWindow.xaml</DependentUpon>
@@ -124,11 +144,23 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="Views\CistiWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\CuvaWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Views\GradViews\GradoviWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\KabinetWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\ObezbedjenjeView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -144,7 +176,15 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Views\ProfesorWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Views\RoditeljViews\RoditeljWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\SpremacicWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

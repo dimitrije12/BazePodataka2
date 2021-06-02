@@ -78,5 +78,41 @@ namespace PrivatnaSkolaApp
             Views.KabinetWindow kw = new Views.KabinetWindow();
             kw.Show();
         }
+
+        private void Button_Click_6(object sender, RoutedEventArgs e)
+        {
+            Views.PredmetWindow pw = new Views.PredmetWindow();
+            pw.Show();
+        }
+
+        private void Button_Click_7(object sender, RoutedEventArgs e)
+        {
+            Views.ProfesorWindow pw = new Views.ProfesorWindow();
+            pw.Show();
+        }
+
+        private void Button_Click_8(object sender, RoutedEventArgs e)
+        {
+            Views.SpremacicWindow sw = new Views.SpremacicWindow();
+            sw.Show();
+        }
+
+        private void Button_Click_9(object sender, RoutedEventArgs e)
+        {
+            Views.CistiWindow cw = new Views.CistiWindow();
+            cw.Show();
+        }
+
+        private void Button_Click_10(object sender, RoutedEventArgs e)
+        {
+            Views.Obezbedjenje s = new Views.Obezbedjenje();
+            s.Show();
+        }
+
+        private void Button_Click_11(object sender, RoutedEventArgs e)
+        {
+            Views.CuvaWindow c = new Views.CuvaWindow();
+            c.Show();
+        }
     }
 }

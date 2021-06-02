@@ -35,6 +35,14 @@ namespace PrivatnaSkolaApp.CRUD
         {
             try
             {
+                PredmetCRUD pc = new PredmetCRUD();
+                List<Predmet> predmeti = pc.GetPredmeti().Where(x => x.KabinetBroj == k.Broj).ToList();
+                foreach(Predmet p in predmeti)
+                {
+                    pc.DeletePredmet(p);
+                }
+
+
                 db.Kabineti.Remove(k);
                 db.SaveChanges();
                 return true;

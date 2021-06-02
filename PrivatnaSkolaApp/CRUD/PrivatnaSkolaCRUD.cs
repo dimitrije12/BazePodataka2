@@ -40,6 +40,12 @@ namespace PrivatnaSkolaApp.CRUD
                 {
                     kc.DeleteKabinet(k);
                 }
+                List<Zaposleni> zap = db.Zaposlenis.Where(x => x.PrivatnaSkolaRegBroj == s.RegBroj).ToList();
+                ZaposleniCRUD zc = new ZaposleniCRUD();
+                foreach(Zaposleni z in zap)
+                {
+                    zc.DeleteZaposleni(z);
+                }
 
                 db.PrivatneSkole.Remove(s);
                 db.SaveChanges();

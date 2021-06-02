@@ -5,11 +5,11 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:PrivatnaSkolaApp.Views"
         mc:Ignorable="d"
-        Title="PredmetWindow" Height="450" Width="800">
+        Title="PredmetWindow" Height="450" Width="800" Background="Gray">
     <Grid>
-        <DataGrid x:Name="PredmetiList" AutoGenerateColumns="False" SelectionMode="Single" Margin="10,112,9.6,0">
+        <DataGrid x:Name="PredmetiList" AutoGenerateColumns="False" SelectionMode="Single"  IsReadOnly="True" Margin="10,112,9.6,0">
             <DataGrid.Columns>
-                <DataGridTextColumn x:Name="ImePred" Header="Ime Predmeta" Binding="{Binding ImePredmeta}"/>
+                <DataGridTextColumn x:Name="ImePred" Header="Ime Predmeta" Binding="{Binding ImePredmet}"/>
                 <DataGridTextColumn x:Name="BrojCas" Header="Broj Casova" Binding="{Binding BrojCasova}" />
                 <DataGridTextColumn x:Name="BrojKab" Header="Broj Kabineta" Binding="{Binding KabinetBroj}"/>
                 <DataGridTemplateColumn>
@@ -26,6 +26,9 @@
         <Label Content="Broj Casova" HorizontalAlignment="Left" Margin="10,63,0,0" VerticalAlignment="Top"/>
         <TextBox x:Name="TextBoxBrojCasova" HorizontalAlignment="Left" Height="26" Margin="105,63,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="128"/>
         <Label Content="Kabinet" HorizontalAlignment="Left" Margin="290,14,0,0" VerticalAlignment="Top" Height="31" Width="56"/>
+        <Button Content="Sacuvaj predmet" HorizontalAlignment="Left" Margin="677,88,0,0" VerticalAlignment="Top" Width="107" Click="Button_Click"/>
+        <ComboBox x:Name="ComboBoxKabinet"  HorizontalAlignment="Left" Margin="351,14,0,0" VerticalAlignment="Top" SelectedValuePath="Broj" DisplayMemberPath="Broj" Width="120" ItemsSource="{Binding Kabineti}" />
+
 
     </Grid>
 </Window>

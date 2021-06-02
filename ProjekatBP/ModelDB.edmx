@@ -181,6 +181,7 @@
     <Property Name="Ime_R" Type="nvarchar(max)" Nullable="false" />
     <Property Name="Prezime_R" Type="nvarchar(max)" Nullable="false" />
     <Property Name="PrivatnaSkolaRegBroj" Type="int" Nullable="false" />
+    <Property Name="Uloga" Type="nvarchar(max)" Nullable="false" />
   </EntityType>
   <EntityType Name="Predmeti">
     <Key>
@@ -817,6 +818,7 @@
           <Property Name="Prezime_R" Type="String" Nullable="false" />
           <NavigationProperty Name="PrivatnaSkola" Relationship="ModelDB.ZaposleniPrivatnaSkola" FromRole="Zaposleni" ToRole="PrivatnaSkola" />
           <Property Name="PrivatnaSkolaRegBroj" Type="Int32" Nullable="false" />
+          <Property Name="Uloga" Type="String" Nullable="false" />
         </EntityType>
         <Association Name="ZaposleniPrivatnaSkola">
           <End Type="ModelDB.Zaposleni" Role="Zaposleni" Multiplicity="*" />
@@ -1151,6 +1153,7 @@
           <ScalarProperty Name="Ime_R" ColumnName="Ime_R" />
           <ScalarProperty Name="Prezime_R" ColumnName="Prezime_R" />
           <ScalarProperty Name="PrivatnaSkolaRegBroj" ColumnName="PrivatnaSkolaRegBroj" />
+          <ScalarProperty Name="Uloga" ColumnName="Uloga" />
         </MappingFragment>
       </EntityTypeMapping>
       <EntityTypeMapping TypeName="IsTypeOf(ModelDB.Profesor)">
