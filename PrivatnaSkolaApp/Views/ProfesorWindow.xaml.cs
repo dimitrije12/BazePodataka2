@@ -112,6 +112,8 @@ namespace PrivatnaSkolaApp.Views
             TextBoxName.Text = String.Empty;
             TextBoxPrezime.Text = String.Empty;
             GodineTB.Text = String.Empty;
+            ComboBoxPredmeti.SelectedItem = null;
+            ComboBoxSkola.SelectedItem = null;
             id = "";
         }
 

@@ -5,6 +5,8 @@ using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
+using System.Configuration;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -105,6 +107,49 @@ namespace PrivatnaSkolaApp.Views
                 this.editNum = r.RegBroj;
 
                
+            }
+        }
+
+        private void Studenata_Click(object sender, RoutedEventArgs e)
+        {
+            PrivatnaSkola g = ((FrameworkElement)sender).DataContext as PrivatnaSkola;
+            if (g != null)
+            {
+
+                var conString = ConfigurationManager.ConnectionStrings["ModelDBContext"].ConnectionString;
+                if (conString.ToLower().StartsWith("metadata="))
+                {
+                    System.Data.Entity.Core.EntityClient.EntityConnectionStringBuilder efBuilder = new System.Data.Entity.Core.EntityClient.EntityConnectionStringBuilder(conString);
+                    conString = efBuilder.ProviderConnectionString;
+                }
+
+                int ukupnoStudenata = 0;
+
+                using (SqlConnection con = new SqlConnection(conString))
+                {
+                    using (SqlCommand com = new SqlCommand("UceniciUSkoli", con))
+                    {
+                        com.CommandType = System.Data.CommandType.StoredProcedure;
+                        com.Parameters.Add("@REGBr", System.Data.SqlDbType.Int).Value = g.RegBroj;
+                        com.Parameters.Add("@UkupnoUcenika", System.Data.SqlDbType.Int);
+                        com.Parameters["@UkupnoUcenika"].Direction = System.Data.ParameterDirection.Output;
+
+                        try
+                        {
+                            con.Open();
+                            com.ExecuteNonQuery();
+
+                            ukupnoStudenata = (Int32)com.Parameters["@UkupnoUcenika"].Value;
+                            MessageBox.Show(String.Format("Ukupno ucenika: {0} .", ukupnoStudenata), "Uspesno", MessageBoxButton.OK, MessageBoxImage.Information);
+                        }
+                        catch
+                        {
+                            MessageBox.Show("Neka greska se desila", "Greska", MessageBoxButton.OK, MessageBoxImage.Error);
+                        }
+
+                    }
+                }
+
             }
         }
     }

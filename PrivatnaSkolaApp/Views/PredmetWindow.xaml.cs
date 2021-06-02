@@ -79,6 +79,7 @@ namespace PrivatnaSkolaApp.Views
                     DeleteInput();
                 }
                 updateData();
+                DeleteInput();
             }
             catch
             {

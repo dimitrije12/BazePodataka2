@@ -23,7 +23,7 @@ namespace PrivatnaSkolaApp.Views
     public partial class VlasnikWindow : Window
     {
         private VlasnikCRUD db;
-        private string EditID;
+        private string EditID = "";
         private BindingList<Vlasnik> vlasnicii;
         public VlasnikWindow()
         {

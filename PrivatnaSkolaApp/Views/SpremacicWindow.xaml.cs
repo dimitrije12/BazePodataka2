@@ -97,6 +97,7 @@ namespace PrivatnaSkolaApp.Views
             TextBoxPrezime.Text = String.Empty;
             GodineTB.Text = String.Empty;
             id = "";
+            ComboBoxSkola.SelectedItem = null;
         }
         private void EDIT_Click(object sender, RoutedEventArgs e)
         {

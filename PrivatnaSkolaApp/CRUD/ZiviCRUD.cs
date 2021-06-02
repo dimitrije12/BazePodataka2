@@ -36,7 +36,7 @@ namespace PrivatnaSkolaApp.CRUD
             try
             {
                 
-                    db.Zivis.Remove(db.Zivis.Find(p.UcenikJMBG_U, p.GradPostanskiBroj));
+                    db.Zivis.Remove(db.Zivis.Find(p.GradPostanskiBroj,p.UcenikJMBG_U));
                     db.SaveChanges();
                 
                 return true;
