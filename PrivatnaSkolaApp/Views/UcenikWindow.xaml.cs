@@ -79,7 +79,7 @@ namespace PrivatnaSkolaApp.Views
             }
             catch
             {
-
+                MessageBox.Show("Neka greska se desila", "Greska", MessageBoxButton.OK, MessageBoxImage.Error);
             }
         }
         private void ClearForm()
