@@ -5,7 +5,7 @@ SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
 GO
-CREATE FUNCTION [dbo].[fnVratiNullBr]
+CREATE FUNCTION [dbo].[BROJCistacica]
     (
 
     )
@@ -23,5 +23,5 @@ BEGIN
 END
 
 declare @n int
-exec @n = [dbo].[fnVratiNullBr];
+exec @n = [dbo].[BROJCistacica];
 select @n
