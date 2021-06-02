@@ -36,7 +36,13 @@ namespace PrivatnaSkolaApp.CRUD
         {
             try
             {
-                db.Vlasnici.Remove(v);
+                List<Drzi> drzis = db.Drzis.Where(x => x.VlasnikJMBG_V == v.JMBG_V).ToList();
+                DrziCRUD dc = new DrziCRUD();
+                foreach(Drzi d in drzis)
+                {
+                    dc.DeleteDrzi(d);
+                }
+                db.Vlasnici.Remove(db.Vlasnici.Find(v.JMBG_V));
                 db.SaveChanges();
                 return true;
             }

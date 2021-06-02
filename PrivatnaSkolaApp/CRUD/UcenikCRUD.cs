@@ -49,7 +49,7 @@ namespace PrivatnaSkolaApp.CRUD
                     zcrud.DeleteZivi(zi);
                 }
 
-                db.Ucenici.Remove(u);
+                db.Ucenici.Remove(db.Ucenici.Find(u.JMBG_U));
                     db.SaveChanges();
                 
                 return true;

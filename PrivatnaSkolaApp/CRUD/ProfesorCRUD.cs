@@ -24,7 +24,7 @@ namespace PrivatnaSkolaApp.CRUD
         {
             try
             {
-                db.Zaposlenis.Remove(z);
+                db.Zaposlenis.Remove(db.Zaposlenis.Find(z.Ime_R));
                 db.SaveChanges();
                 return true;
             }
@@ -33,6 +33,7 @@ namespace PrivatnaSkolaApp.CRUD
                 return false;
             }
         }
+       
 
         public IEnumerable<Zaposleni> GetZaposleni()
         {

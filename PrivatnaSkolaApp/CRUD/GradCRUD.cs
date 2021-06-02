@@ -46,7 +46,7 @@ namespace PrivatnaSkolaApp.CRUD
                 zcrud.DeleteZivi(zi);
             }
 
-            dataBase.Gradovi.Remove(grad);
+            dataBase.Gradovi.Remove(dataBase.Gradovi.Find(grad.PostanskiBroj));
             dataBase.SaveChanges();
         }
 

@@ -7,15 +7,16 @@ using System.Threading.Tasks;
 
 namespace PrivatnaSkolaApp.CRUD
 {
-    class ObezbedjenjCRUD
+    class DirektorCRUD
     {
+
         private ModelDBContext db;
-        public ObezbedjenjCRUD()
+        public DirektorCRUD()
         {
             db = new ModelDBContext();
         }
 
-        public void AddObezbedjenje(Obezbedjenje s)
+        public void AddDirektor(Direktor s)
         {
             try
             {
@@ -27,18 +28,19 @@ namespace PrivatnaSkolaApp.CRUD
 
             }
         }
-        public bool DeleteObezbedjenje(Obezbedjenje z)
+        public bool DeleteDirektor(Direktor z)
         {
             try
             {
-                
-                List<Cuva> c = db.Cuvas.Where(x => x.ObezbedjenjeJMBG_R == z.JMBG_R).ToList();
-                CuvaCRUD cc = new CuvaCRUD();
-                foreach (Cuva cuva in c)
+                /*
+                List<Cisti> cis = db.Cistis.Where(x => x.SpremacicaJMBG_R == z.JMBG_R).ToList();
+                CistiCRUD cisc = new CistiCRUD();
+                foreach (Cisti cuva in cis)
                 {
-                    cc.DeleteCuva(cuva);
+                    cisc.DeleteCisti(cuva);
                 }
-                
+                */
+
                 db.Zaposlenis.Remove(db.Zaposlenis.Find(z.JMBG_R));
                 db.SaveChanges();
                 return true;
@@ -65,5 +67,6 @@ namespace PrivatnaSkolaApp.CRUD
         {
             return db.PrivatneSkole;
         }
+
     }
 }

@@ -72,10 +72,13 @@
     </ApplicationDefinition>
     <Compile Include="CRUD\CistiCRUD.cs" />
     <Compile Include="CRUD\CuvaCRUD.cs" />
+    <Compile Include="CRUD\DirektorCRUD.cs" />
+    <Compile Include="CRUD\DrziCRUD.cs" />
     <Compile Include="CRUD\GradCRUD.cs" />
     <Compile Include="CRUD\KabinetCRUD.cs" />
     <Compile Include="CRUD\ObezbedjenjCRUD.cs" />
     <Compile Include="CRUD\PohadjaCRUD.cs" />
+    <Compile Include="CRUD\PotpisiUgovorCRUD.cs" />
     <Compile Include="CRUD\PredmetCRUD.cs" />
     <Compile Include="CRUD\PrivatnaSkolaCRUD.cs" />
     <Compile Include="CRUD\ProfesorCRUD.cs" />
@@ -92,6 +95,12 @@
     <Compile Include="Views\CuvaWindow.xaml.cs">
       <DependentUpon>CuvaWindow.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Views\DirektorWindow.xaml.cs">
+      <DependentUpon>DirektorWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\DrziWindow.xaml.cs">
+      <DependentUpon>DrziWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\GradViews\GradoviWindow.xaml.cs">
       <DependentUpon>GradoviWindow.xaml</DependentUpon>
     </Compile>
@@ -103,6 +112,9 @@
     </Compile>
     <Compile Include="Views\PohadjaView.xaml.cs">
       <DependentUpon>PohadjaView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\PotpisiUgovor.xaml.cs">
+      <DependentUpon>PotpisiUgovor.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\PredmetWindow.xaml.cs">
       <DependentUpon>PredmetWindow.xaml</DependentUpon>
@@ -152,6 +164,14 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Views\DirektorWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\DrziWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Views\GradViews\GradoviWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -165,6 +185,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\PohadjaView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\PotpisiUgovor.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

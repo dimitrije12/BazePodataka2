@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:PrivatnaSkolaApp.Views"
         mc:Ignorable="d"
-        Title="CuvaWindow" Height="450" Width="800">
+        Title="CuvaWindow" Height="450" Width="800" Background="Gray">
     <Grid>
         <DataGrid x:Name="CistiList" Margin="10,132,9.6,0" SelectionMode="Single" AutoGenerateColumns="False" IsReadOnly="True">
             <DataGrid.Columns>

@@ -35,7 +35,7 @@ namespace PrivatnaSkolaApp.CRUD
         {
             try
             {
-                db.Roditelji.Remove(roditelj);
+                db.Roditelji.Remove(db.Roditelji.Find(roditelj.JMBG_Rod));
                 db.SaveChanges();
                 return true;
             }

@@ -114,5 +114,17 @@ namespace PrivatnaSkolaApp
             Views.CuvaWindow c = new Views.CuvaWindow();
             c.Show();
         }
+
+        private void Button_Click_12(object sender, RoutedEventArgs e)
+        {
+            Views.Direktor d = new Views.Direktor();
+            d.Show();
+        }
+
+        private void Button_Click_13(object sender, RoutedEventArgs e)
+        {
+            Views.DrziWindow dw = new Views.DrziWindow();
+            dw.Show();
+        }
     }
 }

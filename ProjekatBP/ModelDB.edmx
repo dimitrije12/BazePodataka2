@@ -159,7 +159,7 @@
     <Key>
       <PropertyRef Name="RegBroj" />
     </Key>
-    <Property Name="RegBroj" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="RegBroj" Type="int" Nullable="false" />
     <Property Name="BrojTelefon" Type="nvarchar(max)" Nullable="false" />
     <Property Name="ImeSkole" Type="nvarchar(max)" Nullable="false" />
     <Property Name="GradPostanskiBroj" Type="int" Nullable="false" />
@@ -195,7 +195,7 @@
     <Key>
       <PropertyRef Name="Broj" />
     </Key>
-    <Property Name="Broj" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Broj" Type="int" Nullable="false" />
     <Property Name="Sprat" Type="int" Nullable="false" />
     <Property Name="PrivatnaSkolaRegBroj" Type="int" Nullable="false" />
   </EntityType>
@@ -752,7 +752,7 @@
           <Key>
             <PropertyRef Name="RegBroj" />
           </Key>
-          <Property Name="RegBroj" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="RegBroj" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="None" />
           <Property Name="BrojTelefon" Type="String" Nullable="false" />
           <Property Name="ImeSkole" Type="String" Nullable="false" />
           <NavigationProperty Name="Grad" Relationship="ModelDB.GradPrivatnaSkola" FromRole="PrivatnaSkola" ToRole="Grad" />
@@ -872,7 +872,7 @@
           <Key>
             <PropertyRef Name="Broj" />
           </Key>
-          <Property Name="Broj" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Broj" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="None" />
           <Property Name="Sprat" Type="Int32" Nullable="false" />
           <NavigationProperty Name="Predmeti" Relationship="ModelDB.KabinetPredmet" FromRole="Kabinet" ToRole="Predmet" />
           <NavigationProperty Name="PrivatnaSkola" Relationship="ModelDB.PrivatnaSkolaKabinet" FromRole="Kabinet" ToRole="PrivatnaSkola" />

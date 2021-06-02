@@ -31,20 +31,29 @@ namespace PrivatnaSkolaApp.CRUD
         {
             try
             {
-                List<Cuva> c = db.Cuvas.Where(x => x.ObezbedjenjeJMBG_R == z.JMBG_R).ToList();
-                CuvaCRUD cc = new CuvaCRUD();
-                foreach (Cuva cuva in c)
+
+
+                /*
+                List<Zaposleni> profesori = db.Zaposlenis.Where(a => ((a.Uloga == "Prof") && (a.JMBG_R == z.JMBG_R))).ToList();
+                ProfesorCRUD pc = new ProfesorCRUD();
+                foreach(Za p in profesori)
                 {
-                    cc.DeleteCuva(cuva);
-                }
-                List<Cisti> cis = db.Cistis.Where(x => x.SpremacicaJMBG_R == z.JMBG_R).ToList();
-                CistiCRUD cisc = new CistiCRUD();
-                foreach (Cisti cuva in cis)
-                {
-                    cisc.DeleteCisti(cuva);
+                    pc.DeleteProfesor(p);
                 }
 
-                db.Zaposlenis.Remove(z);
+                List<Obezbedjenje> ob = new List<Obezbedjenje>()
+
+
+                */
+
+                List<Drzi> d = db.Drzis.Where(x => x.DirektorJMBG_R == z.JMBG_R).ToList();
+                DrziCRUD dc = new DrziCRUD();
+                foreach (Drzi dd in d)
+                {
+                    dc.DeleteDrzi(dd);
+                }
+
+                db.Zaposlenis.Remove(db.Zaposlenis.Find(z.JMBG_R));
                 db.SaveChanges();
                 return true;
             }

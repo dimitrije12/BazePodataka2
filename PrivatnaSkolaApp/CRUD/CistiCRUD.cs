@@ -32,7 +32,8 @@ namespace PrivatnaSkolaApp.CRUD
         {
             try
             {
-                db.Cistis.Remove(c);
+                db.Cistis.Remove(db.Cistis.Find(c.SpremacicaJMBG_R,c.KabinetBroj));
+                db.SaveChanges();
             }
             catch
             {

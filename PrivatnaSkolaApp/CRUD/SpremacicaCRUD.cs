@@ -31,7 +31,15 @@ namespace PrivatnaSkolaApp.CRUD
         {
             try
             {
-                db.Zaposlenis.Remove(z);
+                
+                List<Cisti> cis = db.Cistis.Where(x => x.SpremacicaJMBG_R == z.JMBG_R).ToList();
+                CistiCRUD cisc = new CistiCRUD();
+                foreach (Cisti cuva in cis)
+                {
+                    cisc.DeleteCisti(cuva);
+                }
+                
+                db.Zaposlenis.Remove(db.Zaposlenis.Find(z.JMBG_R));
                 db.SaveChanges();
                 return true;
             }

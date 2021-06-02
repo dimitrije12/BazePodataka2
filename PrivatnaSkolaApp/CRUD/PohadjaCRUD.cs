@@ -35,8 +35,8 @@ namespace PrivatnaSkolaApp.CRUD
         {
             try
             {
-                
-                    db.Pohadjas.Remove(p);
+               
+                    db.Pohadjas.Remove(db.Pohadjas.Find(p.UcenikJMBG_U,p.PrivatnaSkolaRegBroj));
                     db.SaveChanges();
                 
                 return true;

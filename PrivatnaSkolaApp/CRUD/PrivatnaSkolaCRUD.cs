@@ -33,6 +33,15 @@ namespace PrivatnaSkolaApp.CRUD
         {
             try
             {
+                List<Pohadja> poh = db.Pohadjas.Where(x => x.PrivatnaSkolaRegBroj == s.RegBroj).ToList();
+                PohadjaCRUD pcr = new PohadjaCRUD();
+                foreach(Pohadja p in poh)
+                {
+                    pcr.DeletePohadja(p);
+                }
+
+
+
 
                 List<Kabinet> kab = db.Kabineti.Where(x => x.PrivatnaSkolaRegBroj == s.RegBroj).ToList();
                 KabinetCRUD kc = new KabinetCRUD();
@@ -40,14 +49,25 @@ namespace PrivatnaSkolaApp.CRUD
                 {
                     kc.DeleteKabinet(k);
                 }
-                List<Zaposleni> zap = db.Zaposlenis.Where(x => x.PrivatnaSkolaRegBroj == s.RegBroj).ToList();
-                ZaposleniCRUD zc = new ZaposleniCRUD();
-                foreach(Zaposleni z in zap)
+
+                List<Drzi> d = db.Drzis.Where(x => x.PrivatnaSkolaRegBroj == s.RegBroj).ToList();
+                DrziCRUD dc = new DrziCRUD();
+                foreach(Drzi dd in d)
                 {
-                    zc.DeleteZaposleni(z);
+                    dc.DeleteDrzi(dd);
                 }
 
-                db.PrivatneSkole.Remove(s);
+
+                List<Zaposleni> zap = db.Zaposlenis.Where(x => x.PrivatnaSkolaRegBroj == s.RegBroj).ToList();
+                ZaposleniCRUD zc = new ZaposleniCRUD();
+                foreach (Zaposleni z in zap)
+                {
+                    zc.DeleteZaposleni(z);
+
+                }
+
+
+                db.PrivatneSkole.Remove(db.PrivatneSkole.Find(s.RegBroj));
                 db.SaveChanges();
                 return true;
             }

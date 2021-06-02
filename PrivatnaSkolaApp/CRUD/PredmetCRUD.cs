@@ -41,7 +41,19 @@ namespace PrivatnaSkolaApp.CRUD
         {
             try
             {
-                db.Predmeti.Remove(p);
+
+                List<Zaposleni> profesori = db.Zaposlenis.Where(x => x.Uloga == "Prof").ToList();
+                ProfesorCRUD pc = new ProfesorCRUD();
+                foreach(Profesor pR in profesori)
+                {
+                    if (pR.PredmetImePredmet == p.ImePredmet)
+                    {
+                        pc.DeleteProfesor(pR);
+                    }
+                }
+
+
+                db.Predmeti.Remove(db.Predmeti.Find(p.ImePredmet));
                 db.SaveChanges();
                 return true;
             }

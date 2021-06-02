@@ -35,15 +35,71 @@ namespace PrivatnaSkolaApp.CRUD
         {
             try
             {
+
+                List<Cisti> cis = db.Cistis.Where(X => X.KabinetBroj == k.Broj).ToList();
+                CistiCRUD cisc = new CistiCRUD();
+                foreach (Cisti cuva in cis)
+                {
+                    cisc.DeleteCisti(cuva);
+                }
+                List<Cuva> c = db.Cuvas.Where(X => X.KabinetBroj == k.Broj).ToList();
+                CuvaCRUD cc = new CuvaCRUD();
+                foreach (Cuva cuva in c)
+                {
+                    cc.DeleteCuva(cuva);
+                }
+                /*
+               
+                */
+                List<Zaposleni> zap = db.Zaposlenis.Where(x => x.PrivatnaSkolaRegBroj == k.PrivatnaSkolaRegBroj).ToList();
+                ZaposleniCRUD zc = new ZaposleniCRUD();
+                foreach (Zaposleni z in zap)
+                {
+                   
+                    if (z.Uloga == "Cistacica")
+                    {
+                        SpremacicaCRUD sc = new SpremacicaCRUD();
+                        Spremacica w = new Spremacica
+                        {
+                            Ime_R = z.Ime_R,
+                            Prezime_R = z.Prezime_R,
+                            JMBG_R = z.JMBG_R,
+                            Godine = z.Godine,
+
+                        };
+                        sc.DeleteSpremacica(w);
+                    }
+                    else if (z.Uloga == "Obezbedjenje")
+                    {
+                        ObezbedjenjCRUD oc = new ObezbedjenjCRUD();
+                        Obezbedjenje o = new Obezbedjenje
+                        {
+                            Ime_R = z.Ime_R,
+                            Prezime_R = z.Prezime_R,
+                            JMBG_R = z.JMBG_R,
+                            Godine = z.Godine,
+                        };
+                        oc.DeleteObezbedjenje(o);
+
+                    }
+                    else if (z.Uloga == "Prof")
+                    {
+
+                        ProfesorCRUD prc = new ProfesorCRUD();
+                        Profesor p = z as Profesor;
+                       
+                        prc.DeleteProfesor(p);
+                    }
+
+                }
                 PredmetCRUD pc = new PredmetCRUD();
                 List<Predmet> predmeti = pc.GetPredmeti().Where(x => x.KabinetBroj == k.Broj).ToList();
-                foreach(Predmet p in predmeti)
+                foreach (Predmet p in predmeti)
                 {
                     pc.DeletePredmet(p);
                 }
 
-
-                db.Kabineti.Remove(k);
+                db.Kabineti.Remove(db.Kabineti.Find(k.Broj));
                 db.SaveChanges();
                 return true;
             }

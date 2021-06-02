@@ -32,7 +32,8 @@ namespace PrivatnaSkolaApp.CRUD
         {
             try
             {
-                db.Cuvas.Remove(c);
+                db.Cuvas.Remove(db.Cuvas.Find(c.ObezbedjenjeJMBG_R,c.KabinetBroj));
+                db.SaveChanges();
             }
             catch
             {

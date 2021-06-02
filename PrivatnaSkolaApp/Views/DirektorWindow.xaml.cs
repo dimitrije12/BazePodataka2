@@ -19,43 +19,34 @@ using System.Windows.Shapes;
 namespace PrivatnaSkolaApp.Views
 {
     /// <summary>
-    /// Interaction logic for Obezbedjenje.xaml
+    /// Interaction logic for Direktor.xaml
     /// </summary>
-    public partial class Obezbedjenje : Window
+    public partial class Direktor : Window
     {
-        private ObezbedjenjCRUD db;
-        public BindingList<Obezbedjenje> obezbedjenje;
+        private DirektorCRUD db;
+        public BindingList<ProjekatBP.Direktor> spremacice;
         private BindingList<Zaposleni> zap;
         public BindableCollection<PrivatnaSkola> skole;
-        public Obezbedjenje()
+        public Direktor()
         {
             InitializeComponent();
-            db = new ObezbedjenjCRUD();
+            db = new DirektorCRUD();
             UpdateData();
         }
+
         private void UpdateData()
         {
             zap = new BindingList<Zaposleni>(db.GetZaposleni().ToList());
             skole = new BindableCollection<PrivatnaSkola>(db.GetSkole().ToList());
-            ObezbedjenjeList.ItemsSource = zap.Where(x => x.Uloga == "Obezbedjenje");
+            DirektorList.ItemsSource = zap.Where(x => x.Uloga == "Direktor");
             ComboBoxSkola.ItemsSource = skole;
-        }
-
-        private void DEL_Click(object sender, RoutedEventArgs e)
-        {
-            ProjekatBP.Obezbedjenje r = ((FrameworkElement)sender).DataContext as ProjekatBP.Obezbedjenje;
-            if (r != null)
-            {
-                db.DeleteObezbedjenje(r);
-                UpdateData();
-            }
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             try
             {
-                ProjekatBP.Obezbedjenje s = new ProjekatBP.Obezbedjenje
+                ProjekatBP.Direktor s = new ProjekatBP.Direktor
                 {
                     JMBG_R = TextBoxJMBG.Text,
                     Godine = GodineTB.Text,
@@ -63,14 +54,24 @@ namespace PrivatnaSkolaApp.Views
                     Prezime_R = TextBoxPrezime.Text,
                     PrivatnaSkolaRegBroj = Int32.Parse(((PrivatnaSkola)ComboBoxSkola.SelectedItem).RegBroj.ToString()),
                     //PredmetImePredmet = ((Predmet)ComboBoxPredmeti.SelectedItem).ImePredmet,
-                    Uloga = "Obezbedjenje"
+                    Uloga = "Direktor"
                 };
-                db.AddObezbedjenje(s);
+                db.AddDirektor(s);
                 UpdateData();
             }
             catch
             {
 
+            }
+        }
+
+        private void DEL_Click(object sender, RoutedEventArgs e)
+        {
+            ProjekatBP.Direktor r = ((FrameworkElement)sender).DataContext as ProjekatBP.Direktor;
+            if (r != null)
+            {
+                db.DeleteDirektor(r);
+                UpdateData();
             }
         }
     }

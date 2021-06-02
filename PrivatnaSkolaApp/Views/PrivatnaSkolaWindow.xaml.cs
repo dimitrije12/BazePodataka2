@@ -70,6 +70,7 @@ namespace PrivatnaSkolaApp.Views
                 db.DeletePrivSk(r);
                 Skolee = new BindingList<PrivatnaSkola>(db.GetPrivatneSkole().ToList());
                 PrivSkList.ItemsSource = Skolee;
+                GradoviCB.ItemsSource = Gradovi;
             }
         }
     }

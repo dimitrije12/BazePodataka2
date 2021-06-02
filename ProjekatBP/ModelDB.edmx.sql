@@ -2,13 +2,13 @@
 -- --------------------------------------------------
 -- Entity Designer DDL Script for SQL Server 2005, 2008, 2012 and Azure
 -- --------------------------------------------------
--- Date Created: 06/02/2021 03:19:09
+-- Date Created: 06/02/2021 16:13:52
 -- Generated from EDMX file: C:\Users\KORISNIK\Desktop\ProjekatBP\ProjekatBP\ModelDB.edmx
 -- --------------------------------------------------
 
 SET QUOTED_IDENTIFIER OFF;
 GO
-USE [BP2Base];
+USE [ProjekatBP2baza];
 GO
 IF SCHEMA_ID(N'dbo') IS NULL EXECUTE(N'CREATE SCHEMA [dbo]');
 GO
@@ -190,7 +190,7 @@ GO
 
 -- Creating table 'PrivatneSkole'
 CREATE TABLE [dbo].[PrivatneSkole] (
-    [RegBroj] int IDENTITY(1,1) NOT NULL,
+    [RegBroj] int  NOT NULL,
     [BrojTelefon] nvarchar(max)  NOT NULL,
     [ImeSkole] nvarchar(max)  NOT NULL,
     [GradPostanskiBroj] int  NOT NULL
@@ -225,7 +225,7 @@ GO
 
 -- Creating table 'Kabineti'
 CREATE TABLE [dbo].[Kabineti] (
-    [Broj] int IDENTITY(1,1) NOT NULL,
+    [Broj] int  NOT NULL,
     [Sprat] int  NOT NULL,
     [PrivatnaSkolaRegBroj] int  NOT NULL
 );

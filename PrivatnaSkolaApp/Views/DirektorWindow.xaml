@@ -1,0 +1,40 @@
+﻿<Window x:Class="PrivatnaSkolaApp.Views.Direktor"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:PrivatnaSkolaApp.Views"
+        mc:Ignorable="d"
+        Title="Direktor" Height="450" Width="800" Background="Gray">
+    <Grid>
+        <DataGrid x:Name="DirektorList" SelectionMode="Single"  IsReadOnly="True" AutoGenerateColumns="False" Margin="10,145,9.6,0">
+            <DataGrid.Columns>
+                <DataGridTextColumn x:Name="ImeDirektor" Header="Ime cistacice" Binding="{Binding Ime_R}"/>
+                <DataGridTextColumn x:Name="PrezimeDirektor" Header="Prezime cistacice" Binding="{Binding Prezime_R}"/>
+                <DataGridTextColumn x:Name="JMBGDirektor" Header="JMBG cistacie" Binding="{Binding JMBG_R}"/>
+                <DataGridTextColumn x:Name="SkolaP" Header="Skola" Binding="{Binding PrivatnaSkolaRegBroj}" />
+                <DataGridTemplateColumn>
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <Button x:Name="DEL" Content="Obrisi" Click="DEL_Click"/>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+
+            </DataGrid.Columns>
+        </DataGrid>
+        <Label Content="Ime" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top"/>
+        <TextBox x:Name="TextBoxName" HorizontalAlignment="Left" Height="23" Margin="63,12,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="102"/>
+        <Label Content="Prezime" HorizontalAlignment="Left" Margin="10,41,0,0" VerticalAlignment="Top"/>
+        <TextBox x:Name="TextBoxPrezime" HorizontalAlignment="Left" Height="23" Margin="63,41,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="102"/>
+        <Label Content="JMBG" HorizontalAlignment="Left" Margin="10,72,0,0" VerticalAlignment="Top"/>
+        <TextBox x:Name="TextBoxJMBG" HorizontalAlignment="Left" Height="23" Margin="63,72,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="102"/>
+        <Button Content="Sacuvaj Spremacicu" HorizontalAlignment="Left" Margin="602,113,0,0" VerticalAlignment="Top" Width="109" Click="Button_Click"/>
+        <Label Content="Skola" HorizontalAlignment="Left" Margin="222,10,0,0" VerticalAlignment="Top"/>
+        <ComboBox x:Name="ComboBoxSkola" HorizontalAlignment="Left" ItemsSource="{Binding Skole}" SelectedValuePath="RegBroj" DisplayMemberPath="ImeSkole" Margin="280,13,0,0" VerticalAlignment="Top" Width="120"/>
+        <Label Content="Godine" HorizontalAlignment="Left" Margin="10,103,0,0" VerticalAlignment="Top" Width="53"/>
+        <TextBox x:Name="GodineTB" HorizontalAlignment="Left" Height="26" Margin="63,103,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="102"/>
+
+
+    </Grid>
+</Window>
